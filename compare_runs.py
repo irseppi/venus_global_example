@@ -17,6 +17,30 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
+# legend and difference-axis names for the case folders
+CASE_LABELS = {"air": "atm.", "noair": "no atm."}
+DIFF_LABELS = {"air": "Atmosphere", "noair": "No Atmosphere"}
+
+
+def axis_label(comp):
+    """
+    Y-axis name and unit for a component suffix.
+
+    :type comp: str
+    :param comp: file suffix, e.g. 'HXZ.semv' or 'PRE.semp'
+    :rtype: tuple of str
+    :return: (name, unit)
+    """
+    if comp.startswith("PRE"):
+        return "Pressure", "Pa"
+    kind = {"v": "Velocity", "d": "Displacement", "a": "Acceleration"}
+    unit = {"v": "m/s", "d": "m", "a": "m/s$^2$"}
+    q = comp[-1]
+    direction = "Vertical" if comp[2] == "Z" else "Horizontal"
+    return (f"{direction} Ground\n{kind.get(q, comp)}",
+            unit.get(q, ""))
+
+
 def read_trace(run_dir, station, comp):
     """
     Read one SPECFEM2D ASCII seismogram.
@@ -76,17 +100,19 @@ def plot_station(exp_dir, station, cases, comp, out_dir, nyquist_freq=None):
             spectrum[freqs > cutoff] = 0
             filtered_traces[case] = (t, np.fft.irfft(spectrum, n=len(a)))
         traces = filtered_traces
+    label, unit = axis_label(comp)
     fig, axes = plt.subplots(2, 1, figsize=(9, 5), sharex=True)
     for case, (t, a) in traces.items():
-        axes[0].plot(t, a, lw=0.8, label=case)
-    axes[0].set_ylabel(comp)
+        axes[0].plot(t, a, lw=0.8, label=CASE_LABELS.get(case, case))
+    axes[0].set_ylabel(f"{label} ({unit})")
     axes[0].legend(loc="upper right")
-    axes[0].set_title(station)
     if len(traces) >= 2:
         (t0, a0), (_, a1) = list(traces.values())[:2]
         axes[1].plot(t0, a0 - a1, lw=0.8, color="k")
-        axes[1].set_ylabel(f"{cases[0]} - {cases[1]}")
-    axes[1].set_xlabel("time (s)")
+        names = [DIFF_LABELS.get(c, c) for c in list(traces)[:2]]
+        axes[1].set_ylabel(f"{names[0]} -\n{names[1]} ({unit})")
+    axes[1].set_xlabel("Time (s)")
+    fig.align_ylabels(axes)
     fig.tight_layout()
     out = os.path.join(out_dir, f"{station}_{comp.replace('.', '_')}.png")
     fig.savefig(out, dpi=150)

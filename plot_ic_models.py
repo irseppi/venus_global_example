@@ -12,8 +12,8 @@ import os
 
 from matplotlib import pyplot as plt
 
-RUNS = {"V5-Th, solid inner core": "runs/venus_IC2500_T60/air_icsolid",
-        "V1-Tc, liquid core": "runs/venus_V1Tc_T60/air_V1Tc"}
+RUNS = {"Solid Inner Core": "runs/venus_IC2500_T60/air_icsolid",
+        "Liquid Inner Core": "runs/venus_V1Tc_T60/air_V1Tc"}
 FIGURE = "ic_models.png"
 
 
@@ -40,22 +40,22 @@ def read_model(case_dir):
 
 def main():
     """Plot vp, vs and density of both models against radius."""
-    styles = [dict(color="k", ls="-", lw=1.5),
-              dict(color="r", ls="--", lw=1.5)]
+    styles = [dict(color="r", ls="-", lw=1.5),
+              dict(color="k", ls="--", lw=1.5)]
     fig, axes = plt.subplots(1, 3, figsize=(10, 6), sharey=True)
     for (label, case_dir), style in zip(RUNS.items(), styles):
         r, vp, vs, rho = read_model(case_dir)
         axes[0].plot(vp, r, label=label, **style)
         axes[1].plot(vs, r, label=label, **style)
         axes[2].plot(rho, r, label=label, **style)
-    for ax, name in zip(axes, ("P velocity (km/s)", "S velocity (km/s)",
+    for ax, name in zip(axes, ("P-wave velocity (km/s)", "S-wave velocity (km/s)",
                                "Density (g/cm$^3$)")):
         ax.set_xlabel(name)
         ax.grid(alpha=0.3)
     axes[0].set_ylabel("Radius (km)")
-    axes[0].set_ylim(0, None)
+    axes[0].set_ylim(0, max(r))
     axes[0].legend(loc="lower left", fontsize=9)
-    fig.suptitle("Venus interior models")
+    fig.suptitle("Venus Interior Models")
     fig.tight_layout()
     fig.savefig(FIGURE, dpi=150)
     print(f"wrote {FIGURE}")

@@ -1,5 +1,5 @@
 """
-Plot the T60 runs with atmosphere at the ground stations: V5-Th with a
+Plot the T20 runs with atmosphere at the ground stations: V5-Th with a
 solid inner core vs. V1-Tc with a liquid core, with TauP travel times for
 both models.
 
@@ -24,14 +24,15 @@ from matplotlib import pyplot as plt
 from obspy.taup import TauPyModel, taup_create
 
 # run folders: V5-Th with a solid inner core, V1-Tc with a liquid core
-RUNS = {"solid": "runs/venus_IC2500_T60/air_icsolid",
-        "liquid": "runs/venus_V1Tc_T60/air_V1Tc"}
+PERIOD = "T20"                   # T20 or T60: picks the run folders
+RUNS = {"solid": f"runs/venus_IC2500_{PERIOD}/air_icsolid",
+        "liquid": f"runs/venus_V1Tc_{PERIOD}/air_V1Tc"}
 NAMES = {"solid": "V5-Th_IC2500", "liquid": "V1-Tc"}
 EVENT_DEPTH_KM = 10.0
-PHASES = ["P", "PcP", "PKP", "PKiKP", "PKIKP", "S", "SKS", "SKIKS"]
+PHASES = ["P", "PKiKP", "PKIKP", "S", "SKIKS"]
 SPACING = 5.0                    # degrees between traces on the y axis
 TAUP_DIR = "taup_models"
-FIGURE = "ic_compare_T60.png"
+FIGURE = f"ic_compare_{PERIOD}.png"
 
 
 def build_taup(case_dir, name):
@@ -126,9 +127,10 @@ def main():
         print("no seismograms found")
         return
 
-    colors = {ph: plt.cm.tab10(i) for i, ph in enumerate(PHASES)}
-    style = {"solid": dict(color="k", ls="-"),
-             "liquid": dict(color="r", ls="--")}
+    colors = {"P": "#1f77b4", "PKiKP": "#ff7f0e", "PKIKP": "#2ca02c",
+              "S": "#9467bd", "SKIKS": "#17becf"}
+    style = {"solid": dict(color="r", ls="-"),
+             "liquid": dict(color="k", ls="--")}
     half = 0.4 * SPACING
     fig, ax = plt.subplots(figsize=(6, 8))
     labeled = set()
@@ -152,18 +154,19 @@ def main():
                 continue
             for ph, ta in first_arrivals(models[key], dist).items():
                 ax.vlines(ta, dist - half, dist + half, colors=colors[ph],
-                          linestyles=ls, lw=1.2, zorder=100,
+                          linestyles=ls, lw=0.8, zorder=100,
                           label=None if ph in labeled else ph)
                 labeled.add(ph)
 
-    ax.set_title("T60 vertical velocity: Solid Inner Core (black) vs "
-                 "Liquid Inner Core (red)\nTauP: V5-Th —, V1-Tc ···",
+    ax.set_title(f"Vertical Velocity: Solid Inner Core (red) vs "
+                 "Liquid Inner Core (black)\nTauP: Solid —, Liquid ···",
                  fontsize=10)
     ax.set_xlabel("Time (s)")
     ax.set_ylabel("Distance (degrees)")
     ax.text(1.01, 1.0, "peak\n(m/s)", transform=ax.transAxes, fontsize=6,
             va="bottom", ha="left")
     ax.set_xlim(0, t_max)
+    ax.set_ylim(0, 180)
     ax.legend(loc="lower right", fontsize=8, framealpha=0.9)
     fig.tight_layout()
     fig.savefig(FIGURE, dpi=150)
