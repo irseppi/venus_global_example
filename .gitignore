@@ -661,7 +661,6 @@ far_ground_vs_air_175deg_velocity.png
 far_ground_vs_air_175deg.png
 ic_compare_T60.png
 ic_models.png
-CLAUDE.md
 __pycache__/taup_ic_compare.cpython-313.pyc
 fortran/axisym_viscoacoustic_fix.patch.rej
 runs/.DS_Store
@@ -3732,7 +3731,6 @@ taup_models/V5-Th_IC2500_solid.npz
 taup_models/V5-Th_IC2500_solid.tvel
 taup_models/V5-Th_IC2500.npz
 taup_models/V5-Th_IC2500.tvel
-data/models/V5-Th_ICB_2500.out
 runs/venus_IC2500_T60/air_icsolid/OUTPUT_FILES/VE.A005H001.BXX.semv
 runs/venus_IC2500_T60/air_icsolid/OUTPUT_FILES/VE.A005H001.BXZ.semv
 runs/venus_IC2500_T60/air_icsolid/OUTPUT_FILES/VE.A005H001.PRE.semp
