@@ -4375,3 +4375,5 @@ runs/venus_IC2500_T60/air_icsolid/OUTPUT_FILES/points_per_wavelength_histogram_P
 runs/venus_V1Tc_T60/air_V1Tc/OUTPUT_FILES/points_per_wavelength_histogram_P_in_fluid.txt
 runs/venus_IC2500_T60/air_icsolid/OUTPUT_FILES/points_per_wavelength_histogram_S_in_solid.txt
 runs/venus_V1Tc_T60/air_V1Tc/OUTPUT_FILES/points_per_wavelength_histogram_S_in_solid.txt
+*.md
+!README.md
