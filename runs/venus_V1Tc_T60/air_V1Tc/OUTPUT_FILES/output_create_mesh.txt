@@ -1,0 +1,30 @@
+ Generate mesh
+
+ Number of elements at the surface of the whole circle =         8640
+ Radius of the mesh =    6151900.0000000000     
+ Size of a spectral element at the surface =    8.9475758544532642       km
+
+ Since minimum S velocity in the crust is about    3.4600000000000000       km/s
+ and since one spectral element is needed to resolve the shortest wavelength,
+ this mesh is accurate approximately down to a minimum period of    2.5860045822119262       seconds
+
+ Generating the grid for SPECFEM2D...
+
+ generating only half the mesh
+
+
+ Total number of spectral elements =       304830
+
+ Generating the global numbering...
+ Total number of points of the global mesh:      1222279
+
+ Generating the coordinates of the points of the global mesh...
+
+ Writing the external mesh database for SPECFEM2D...
+ using ASCII file format to store the mesh databases
+ Done writing the external mesh database for SPECFEM2D
+
+ number of elements in contact with the symmetry axis =          798
+
+ All Done
+

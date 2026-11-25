@@ -1,0 +1,18 @@
+Venus run 'venus_V1Tc_T20/air_V1Tc'
+air density scale       : 1
+interior                : mantle 3352.8-6051.9 km, liquid outer core 2493.4-3352.8 km, liquid inner core 0-2493.4 km
+minimum period          : 20.0 s  (Ricker f0 = 0.02 Hz)
+multiplication_factor   : 50
+radial counts           : air 126, mantle 1464, outer core 308/308, inner core 564
+central cube radius     : 1327.4 km
+air elements            : 3.22 km wide x 1.59 km tall (need <= 3.32 km)
+slowest air sound speed : 207 m/s
+elements (half mesh)    : 2,324,250
+DT                      : 0.018 s (max estimate 0.0227 s; compare with 'Maximum suggested time step' in the solver output)
+NSTEP                   : 166,700  (3001 s simulated)
+stations                : 210
+sponge                  : True (70.0-100.0 km, Q_min 3.0)
+one-way vertical air travel time to the top: 360 s
+  -> echoes off the top return ~720 s after an arrival at a
+     ground station; analyze before that if the sponge is off
+estimated cost          : 123.8-371.3 core-hours; 0.74-2.21 h on 168 cores (cluster), 30.9-92.8 h on 4 cores (local)

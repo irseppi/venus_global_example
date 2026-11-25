@@ -1,0 +1,4082 @@
+building the mesh: Tue Nov 24 14:49:56 AKST 2026
+clang: warning: overriding deployment version from '16.0' to '26.0' [-Woverriding-deployment-version]
+ld: warning: duplicate -rpath '/opt/anaconda3/envs/spec2D/lib' ignored
+partitioning: Tue Nov 24 14:50:00 AKST 2026
+
+ **********************************************
+ *** Specfem 2-D Mesher - MPI version       ***
+ **********************************************
+
+ Running Git version of the code corresponding to 785f9d93a78c0d9f7c37573985ac65faf94c654b
+ dating 2025-06-30 22:43:16 +0200
+
+ Reading the parameter file...
+
+ Title of the simulation: Venus venus_V1Tc_T60 air_V1Tc
+
+ Axisymmetric simulation
+
+   using existing STATIONS file: ./DATA/STATIONS
+   file name is ./DATA/STATIONS
+   found          210  receivers
+
+ Parameter file successfully read 
+
+
+ Mesh from external meshing:
+   Reading materials from external material properties file: ./MESH/Nummaterial_velocity_file_NO_MUD
+
+   defined =            4 undefined =            0
+
+   Materials:
+   Nb of solid, fluid or porous materials =            4
+
+ --------
+ Material #           1  isotropic
+ rho,cp,cs   =    5000.0000000000000        10000.000000000000        5000.0000000000000     
+ Qkappa, Qmu =    9999.0000000000000        9999.0000000000000     
+ Material is solid
+ --------
+ Material #           2  isotropic
+ rho,cp,cs   =    5000.0000000000000        8000.0000000000000        0.0000000000000000     
+ Qkappa, Qmu =    9999.0000000000000        9999.0000000000000     
+ Material is fluid
+ --------
+ Material #           3  isotropic
+ rho,cp,cs   =    5000.0000000000000        8000.0000000000000        0.0000000000000000     
+ Qkappa, Qmu =    9999.0000000000000        9999.0000000000000     
+ Material is fluid
+ --------
+ Material #           4  isotropic
+ rho,cp,cs   =    5000.0000000000000        8000.0000000000000        0.0000000000000000     
+ Qkappa, Qmu =    9999.0000000000000        9999.0000000000000     
+ Material is fluid
+ --------
+
+   Reading data from external mesh file: ./MESH/Mesh_AK135F_NO_MUD
+     NGNOD =            9
+     Total number of spectral elements   :      304830
+     Total number of nodal points        :     1222279
+
+   Reading materials from external mesh file: ./MESH/Material_AK135F_NO_MUD
+
+ PML mesh elements:
+   Total number of PML elements =            0
+
+ The mesh contains       304830  elements
+
+ Control elements have            9  nodes
+
+ Reading in SOURCE file...
+
+ Source           1
+   Position xs, zs =    0.0000000000000000        6041900.0000000000     
+
+   Source type:            1
+   (1=force, 2=moment tensor)
+
+   Force source:
+   Angle of the source (deg) =    0.0000000000000000     
+
+   Time function type:           1
+   ( 0=Normalized Gaussian,  1=Ricker,          2=First derivative,  3=Gaussian,        4=Dirac,
+     5=Heaviside,            6=Ocean type I,    7=Ocean type II,     8=Read from file,  9=Burst,
+    10=Sinusoidal,          11=Ormsby,         12=Brune,            13=Smoothed Brune, 14=Yoffe )
+   Ricker wavelet (second-derivative):
+   Frequency, delay   =    6.6666700000000004E-003   0.0000000000000000     
+   Multiplying factor =    10000000000.000000     
+
+ all sources are okay
+
+ Normals to surface not needed
+
+ Node coordinates:
+   Reading node coords from external mesh file: ./MESH/Nodes_AK135F_NO_MUD
+     node coords: X min/max =    0.0000000000000000      /   6151900.0000000000     
+                  Z min/max =   -6151900.0000000000      /   6151900.0000000000     
+
+ Mesh surfaces:
+   Reading acoustic surface from external mesh file: ./MESH/Surf_free_AK135F_NO_MUD
+   Total number of surface elements         :            0
+   Total number of acoustic surface elements:            0
+
+ Axisymmetric mesh:
+   Reading axial elements from external mesh file: ./MESH/Symmetry_axis_elements_AK135F_NO_MUD
+ Number of elements on the axis:          798
+ testing for duplicates in the axial element input file...
+ done testing for duplicates
+
+     Total number of axial elements:          798
+
+
+ Axial elements:          798
+
+
+ Mesh dimensions: 
+   Min and max value of X in the grid =    0.0000000000000000        6151900.0000000000     
+   Min and max value of Z in the grid =   -6151900.0000000000        6151900.0000000000     
+
+ checking mesh elements for invalid Jacobians...
+   number of elements:       304830
+   NGNOD             :            9
+   AXISYM            :  T
+   all elements have valid Jacobians
+
+ Mesh partitioning:
+   decomposing mesh using NPROC =            4
+
+ Graph construction:
+   graph adjacency done
+
+ ************ Computing elements load ************
+ Number of elastic elements :      144720
+ Number of acoustic elements :      160110
+ Number of viscoelastic elements :           0
+ Number of viscoacoustic elements :           0
+ Number of elastic PML elements :           0
+ Number of acoustic PML elements :           0
+ Number of viscoelastic PML elements :           0
+ Number of viscoacoustic PML elements :           0
+ *************************************************
+
+
+ Partitioning type: SCOTCH
+
+ Coupled interfaces:
+ nedges_coupled (acoustic/elastic)     =         3240
+   after iteration            2 repartitioning of all coupled elements done
+ nedges_coupled (acoustic/poroelastic) =            0
+ nedges_coupled (poroelastic/elastic)  =            0
+
+ Local numbering:
+   NPROC:            4
+   number of elements:       304830
+
+ decompose mesh all done
+
+ Saving databases:
+   database file: ./OUTPUT_FILES/Database00000.bin
+   slice            0  has number of spectral elements =       88402
+
+   database file: ./OUTPUT_FILES/Database00001.bin
+   slice            1  has number of spectral elements =       70709
+
+   database file: ./OUTPUT_FILES/Database00002.bin
+   slice            2  has number of spectral elements =       80042
+
+   database file: ./OUTPUT_FILES/Database00003.bin
+   slice            3  has number of spectral elements =       65677
+
+   VTK mesh files:
+   written file: ./OUTPUT_FILES//mesh_materials.vtk
+   written file: ./OUTPUT_FILES//mesh_partition_number.vtk
+   done
+
+
+ This will be a parallel simulation on            4  processor cores
+
+solver: Tue Nov 24 14:50:08 AKST 2026
+
+ **********************************************
+ **** Specfem 2-D Solver - MPI version     ****
+ **********************************************
+
+ Running Git version of the code corresponding to 785f9d93a78c0d9f7c37573985ac65faf94c654b
+ dating 2025-06-30 22:43:16 +0200
+
+ There are            4  MPI processes
+ Processes are numbered from 0 to            3
+
+ There is a total of            4  slices
+
+
+ NDIM =            2
+
+ NGLLX =            5
+ NGLLZ =            5
+
+ using single precision for the calculations
+
+ smallest and largest possible floating-point numbers are:    1.17549435E-38   3.40282347E+38
+
+ Reading the parameter file...
+
+ Title of the simulation: Venus venus_V1Tc_T60 air_V1Tc
+
+ Axisymmetric simulation
+
+   using existing STATIONS file: ./DATA/STATIONS
+   file name is ./DATA/STATIONS
+   found          210  receivers
+
+ Parameter file successfully read 
+
+ Reading in SOURCE file...
+
+ Source           1
+   Position xs, zs =    0.0000000000000000        6041900.0000000000     
+
+   Source type:            1
+   (1=force, 2=moment tensor)
+
+   Force source:
+   Angle of the source (deg) =    0.0000000000000000     
+
+   Time function type:           1
+   ( 0=Normalized Gaussian,  1=Ricker,          2=First derivative,  3=Gaussian,        4=Dirac,
+     5=Heaviside,            6=Ocean type I,    7=Ocean type II,     8=Read from file,  9=Burst,
+    10=Sinusoidal,          11=Ormsby,         12=Brune,            13=Smoothed Brune, 14=Yoffe )
+   Ricker wavelet (second-derivative):
+   Frequency, delay   =    6.6666700000000004E-003   0.0000000000000000     
+   Multiplying factor =    10000000000.000000     
+
+ all sources are okay
+
+
+
+ -------------------------------------------------------------------------------
+ -------------------------------------------------------------------------------
+ Program SPECFEM2D: 
+ -------------------------------------------------------------------------------
+ -------------------------------------------------------------------------------
+ Venus venus_V1Tc_T60 air_V1Tc
+ -------------------------------------------------------------------------------
+ -------------------------------------------------------------------------------
+ D a t e : 24 - 11 - 2026                                 T i m e  : 14:50:10
+ -------------------------------------------------------------------------------
+ -------------------------------------------------------------------------------
+
+
+ -----------------------------------------------------
+ --- A x i s y m m e t r i c   S i m u l a t i o n ---
+ -----------------------------------------------------
+
+
+ C o n t r o l
+ =============
+
+     Number of spectral element control nodes. . .(npgeo) = 1224782
+     Number of space dimensions. . . . . . . . . . (NDIM) =       2
+
+
+ C o n t r o l
+ =============
+
+     Display frequency . . . (NTSTEP_BETWEEN_OUTPUT_INFO) =   1200
+     Color display . . . . . . . . . . . . . . . (colors) =      1
+      == 0     black and white display              
+      == 1     color display                        
+     Numbered mesh . . . . . . . . . . . . . . .(numbers) =      0
+      == 0     do not number the mesh               
+      == 1     number the mesh                      
+
+
+ C o n t r o l
+ =============
+
+     Seismograms recording type . . . . . . .(seismotype) = 2,4
+     Angle for first line of receivers. . . . .(anglerec) =   0.00
+
+
+ C o n t r o l
+ =============
+
+     Read external initial field. . . . . .(initialfield) =      F
+     Add Bielak conditions (add_Bielak_conditions_bottom) =      F
+     Add Bielak conditions .(add_Bielak_conditions_right) =      F
+     Add Bielak conditions . .(add_Bielak_conditions_top) =      F
+     Add Bielak conditions. .(add_Bielak_conditions_left) =      F
+     Attenuation in solid . . .(ATTENUATION_VISCOELASTIC) =      F
+     Attenuation in fluid . . (ATTENUATION_VISCOACOUSTIC) =      T
+     Save grid in ASCII file or not . (output_grid_ASCII) =      F
+     Save a file with total energy or not.(OUTPUT_ENERGY) =      F
+
+
+ C o n t r o l
+ =============
+
+     Vector display type . . . . . . . . .(imagetype_postscript) =      1
+     Percentage of cut for vector plots. . . . . . . .(cutsnaps) =   1.00
+     Subsampling of velocity model display. (subsamp_postscript) =      1
+
+
+ I t e r a t i o n s 
+ ===================
+
+     Number of time iterations . . . . .(NSTEP) =   60000
+     Time step increment. . . . . . . . . .(DT) =   5.000000E-02
+     Total simulation duration . . . . . (ttot) =   3.000000E+03
+
+
+ reading mesh databases:
+ reading nodal coordinates...
+
+ -- Spectral Elements --
+
+
+     Number of spectral elements . . . . . . . . .  (nspec) = 304830
+     Number of control nodes per element . . . . . (NGNOD) =      9
+     Number of points in X-direction . . . . . . . (NGLLX) =      5
+     Number of points in Y-direction . . . . . . . (NGLLZ) =      5
+     Number of points per element. . . . . . (NGLLX*NGLLZ) =     25
+     Number of points for display . . . . . . (pointsdisp) =      6
+     Number of element material sets . . . . . . . (numat) =      4
+     Number of acoustic forcing elements (nelem_acforcing) =      0
+     Number of acoustic free surf (nelem_acoustic_surface) =      0
+
+ reading attenuation setup...
+ reading material properties..
+
+
+ M a t e r i a l   s e t s :   2 D  (p o r o) e l a s t i c i t y
+ ======================================================
+
+     Number of material sets . . . . . . (numat) =     4
+
+
+     ----------------------------------------
+     -- Elastic (solid) isotropic material --
+     ----------------------------------------
+     Material set number. . . . . . . . (jmat) =     1
+     P-wave velocity. . . . . . . . . . . (cp) = 1.00000000E+04
+     S-wave velocity. . . . . . . . . . . (cs) = 5.00000000E+03
+     Mass density. . . . . . . . . . (density) = 5.00000000E+03
+     Poisson's ratio. . . . . . . . .(poisson) = 3.33333333E-01
+     First Lame parameter Lambda. . . (lambda) = 2.50000000E+11
+     Second Lame parameter Mu. . . . . . .(mu) = 1.25000000E+11
+     Bulk modulus Kappa . . . . . . . .(kappa) = 3.33333333E+11
+     Young's modulus E. . . . . . . . .(young) = 3.33333333E+11
+     QKappa_attenuation .  . . . . . .(QKappa) = 9.99900000E+03
+     Qmu_attenuation . . . . . . . . . . (Qmu) = 9.99900000E+03
+
+
+
+     -------------------------------
+     -- Acoustic (fluid) material --
+     -------------------------------
+     Material set number. . . . . . . . (jmat) =     2
+     P-wave velocity. . . . . . . . . . . (cp) = 8.00000000E+03
+     Mass density. . . . . . . . . . (density) = 5.00000000E+03
+     Bulk modulus Kappa . . . . . . . .(kappa) = 3.20000000E+11
+     QKappa_attenuation. . . . . . . .(QKappa) = 9.99900000E+03
+     Qmu_attenuation. . . . . . . . . . .(Qmu) = 9.99900000E+03
+
+
+
+     -------------------------------
+     -- Acoustic (fluid) material --
+     -------------------------------
+     Material set number. . . . . . . . (jmat) =     3
+     P-wave velocity. . . . . . . . . . . (cp) = 8.00000000E+03
+     Mass density. . . . . . . . . . (density) = 5.00000000E+03
+     Bulk modulus Kappa . . . . . . . .(kappa) = 3.20000000E+11
+     QKappa_attenuation. . . . . . . .(QKappa) = 9.99900000E+03
+     Qmu_attenuation. . . . . . . . . . .(Qmu) = 9.99900000E+03
+
+
+
+     -------------------------------
+     -- Acoustic (fluid) material --
+     -------------------------------
+     Material set number. . . . . . . . (jmat) =     4
+     P-wave velocity. . . . . . . . . . . (cp) = 8.00000000E+03
+     Mass density. . . . . . . . . . (density) = 5.00000000E+03
+     Bulk modulus Kappa . . . . . . . .(kappa) = 3.20000000E+11
+     QKappa_attenuation. . . . . . . .(QKappa) = 9.99900000E+03
+     Qmu_attenuation. . . . . . . . . . .(Qmu) = 9.99900000E+03
+
+ reading interfaces informations...
+   number of interfaces         =            2
+
+ reading absorbing boundary...
+   Total number of absorbing elements =            0
+
+   any absorbing boundary flag        =  F
+   PML boundary flag                  =  F
+   Stacey boundary flag               =  F
+
+ reading acoustic forcing...
+   acoustic forcing                             =  F
+   number of acoustic forcing boundary elements =            0
+
+ reading free surface information...
+   number of acoustic free surface boundary elements =            0
+
+ reading coupling surfaces...
+   number of fluid-solid edges  =         3240
+   number of fluid-poro  edges  =            0
+   number of solid-poro  edges  =            0
+
+ reading tangential curves...
+   number of tangential curve nodes =            0
+
+ reading axial elements...
+   number of axial elements     =          212
+
+  Total number of elements on the axis :          798
+
+
+ done reading mesh databases
+
+
+ Setting up mesh
+
+ Generating global mesh numbering (fast version)...
+
+ Mesh numbering:
+   Total number of elements:       304830
+
+   Total number of acoustic elements           =       160110
+   Total number of elastic/visco/poro elements =       144720
+
+ Approximate total number of grid points in the mesh
+ (with a few duplicates coming from MPI buffers):      4888200
+
+ Approximate number of acoustic degrees of freedom in the mesh:      2567496
+ Approximate number of elastic degrees of freedom in the mesh:      4641409
+   (there are 2 degrees of freedom per point for elastic elements)
+
+ Approximate total number of degrees of freedom in the mesh
+ (sum of the two values above):      7208905
+
+  (for simplicity viscoelastic or poroelastic elements, if any,
+   are counted as elastic in the above three estimates;
+   in reality they have more degrees of freedom)
+
+ Mesh dimensions:
+   Xmin,Xmax of the whole mesh =    0.0000000000000000        6151900.0000000000     
+   Zmin,Zmax of the whole mesh =   -6151900.0000000000        6151900.0000000000     
+
+ Material properties:
+   MODEL                   : external
+   nspec                   :       304830
+   external velocity model :  T
+
+   assigning an external velocity and density model
+   model selected             : external
+   setup with binary database :            0
+
+   external model: Venus 1-D table ./DATA/venus_model.txt
+   Venus table rows read:          603
+   rho min/max (kg/m3)  :    7.38062008E-05   11841.1299    
+   vp  min/max (m/s)    :    207.309998       13465.6602    
+   Qkappa min           :    3.00000000    
+   done reading external model
+
+   setting up material arrays
+   setting up anisotropic arrays
+   fluid:
+     rho : min/max =    7.38062008E-05 /   11841.1299    
+     vp  : min/max =    207.309998     /   13465.6602    
+
+   elasticitiy:
+     rho : min/max =    7.38062008E-05 /   11841.1299    
+     vs  : min/max =    0.00000000     /   7138.82129    
+     vp  : min/max =    207.309998     /   13465.6602    
+
+   all material arrays done
+
+   written file: ./OUTPUT_FILES/mesh00000_vs.vtk
+   written file: ./OUTPUT_FILES/mesh00000_vp.vtk
+   written file: ./OUTPUT_FILES/mesh00000_rho.vtk
+
+ Domains:
+   total number of acoustic elements        =       160110
+   total number of elastic elements         =       144720
+   total number of poroelastic elements     =            0
+   total number of electromagnetic elements =            0
+
+ Mixed acoustic/elastic simulation
+
+   Beginning of fluid/solid edge detection
+   Checking fluid/solid edge topology...
+   End of fluid/solid edge detection
+
+
+ Setting up MPI communication arrays
+
+   maximum number of MPI interfaces (for a single slice) =            2
+
+   total MPI interface points:        10018
+
+   checking acoustic interfaces:
+   total number of global acoustic interface points:         6084
+   total number of global points assembled by acoustic MPI interfaces:        6084
+   interfaces okay
+
+   main process:
+   number of MPI interfaces in acoustic domain    =            2
+   number of MPI interfaces in elastic domain     =            2
+   number of MPI interfaces in poroelastic domain =            0
+   number of MPI interfaces in electromagnetic domain =            0
+
+   number of outer elements  =          859
+   number of inner elements  =        87543
+
+   percentage of outer elements   0.971694946     %
+   percentage of inner elements    99.0283051     %
+
+   number of global nodes in outer elements  =        17190
+   number of global nodes in inner elements  =      1403705
+
+   determining communication phases:
+   elastic domains:
+   total number of outer/inner elements =          981      143739
+   total percentage of outer elements   0.677864075     %
+   total percentage of inner elements    99.3221359     %
+
+   acoustic domains:
+   total number of outer/inner elements =         1519      158591
+   total percentage of outer elements   0.948722839     %
+   total percentage of inner elements    99.0512772     %
+
+ All mesh setup done successfully
+
+ Sources
+ =======
+
+   Total number of sources:            1
+
+   Setting parameters for source           1
+
+     Source Type. . . . . . . . . . . . . . = Collocated Force
+     X-position (meters). . . . . . . . . . =    0.0000000000E+00
+     Y-position (meters). . . . . . . . . . =    6.0419000000E+06
+     Fundamental frequency (Hz) . . . . . . =    6.6666700000E-03
+     Time delay (s) . . . . . . . . . . . . =    0.0000000000E+00
+     Multiplying factor . . . . . . . . . . =    1.0000000000E+10
+     Angle from vertical direction (deg). . =    0.0000000000E+00
+
+     Source time function
+     Ricker wavelet (second-derivative)
+
+ determining source onset times...
+   simulation start time t0 =   -179.99991000004496       s
+
+   Source:            1
+     Onset time. . . . . . =   -179.99991000004496     
+     Fundamental period. . =    149.99992500003748     
+     Fundamental frequency =    6.6666700000000004E-003
+     The onset time is ok
+
+ Source:            1
+ *******************************
+  locating force source
+ *******************************
+
+ Force source:
+             original x:    0.00000000    
+             original z:    6041900.00    
+ Closest estimate found:    2.00319565E-13  m away
+  in rank            1
+  in element        58176
+  in elastic domain
+  at xi,gamma coordinates =   -1.0000000000000842      -0.95617327160424992     
+
+
+ end of force source detection
+
+
+ receivers:
+
+ Total number of receivers =          210
+
+
+ ********************
+  locating receivers
+ ********************
+
+ reading receiver information from the ./DATA/STATIONS file
+
+
+ Station #            1     VE      G005                            
+             original x:    527456.125    
+             original z:    6028851.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element           60
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000008002651872       -1.0091996215953010     
+ Distance from source:    527617.500      m
+
+
+ Station #            2     VE      G010                            
+             original x:    1050897.88    
+             original z:    5959938.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element        58266
+  in elastic domain
+  at xi,gamma coordinates =   -1.0000006043531460       0.99608670767814378     
+ Distance from source:    1054089.25      m
+
+
+ Station #            3     VE      G015                            
+             original x:    1566341.75    
+             original z:    5845667.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element        58818
+  in elastic domain
+  at xi,gamma coordinates =   0.99999938950306388       0.99608759316917528     
+ Distance from source:    1578586.00      m
+
+
+ Station #            4     VE      G020                            
+             original x:    2069864.88    
+             original z:    5686907.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element        58356
+  in elastic domain
+  at xi,gamma coordinates =   -1.0000012299988386       0.99608770898074195     
+ Distance from source:    2100085.75      m
+
+
+ Station #            5     VE      G025                            
+             original x:    2557635.00    
+             original z:    5484866.00    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            1
+  in element          300
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000008721652685       -1.0091992839248083     
+ Distance from source:    2617591.25      m
+
+
+ Station #            6     VE      G030                            
+             original x:    3025940.00    
+             original z:    5241082.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element        58953
+  in elastic domain
+  at xi,gamma coordinates =    1.0000000744103419       0.99608754249906994     
+ Distance from source:    3130115.50      m
+
+
+ Station #            7     VE      G035                            
+             original x:    3471215.75    
+             original z:    4957410.00    
+ Closest estimate found:    1.04125031E-09  m away
+  in rank            1
+  in element        58491
+  in elastic domain
+  at xi,gamma coordinates =   -1.0000001803970611       0.99608663924230867     
+ Distance from source:    3636682.25      m
+
+
+ Station #            8     VE      G040                            
+             original x:    3890073.50    
+             original z:    4636009.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element          480
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000007661160850       -1.0092013544489769     
+ Distance from source:    4136327.00      m
+
+
+ Station #            9     VE      G045                            
+             original x:    4279325.50    
+             original z:    4279325.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element          540
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999999999984757       -1.0091980010542705     
+ Distance from source:    4628098.50      m
+
+
+ Station #           10     VE      G050                            
+             original x:    4636009.00    
+             original z:    3890073.50    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            1
+  in element        58626
+  in elastic domain
+  at xi,gamma coordinates =   -1.0000007661161034       0.99608707747059322     
+ Distance from source:    5111060.50      m
+
+
+ Station #           11     VE      G055                            
+             original x:    4957410.00    
+             original z:    3471215.75    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            1
+  in element        59178
+  in elastic domain
+  at xi,gamma coordinates =    1.0000001803969454       0.99608663924248098     
+ Distance from source:    5584293.00      m
+
+
+ Station #           12     VE      G060                            
+             original x:    5241082.00    
+             original z:    3025940.00    
+ Closest estimate found:    4.65661287E-10  m away
+  in rank            0
+  in element        40606
+  in elastic domain
+  at xi,gamma coordinates =   0.99999992558969231       0.99608754249895104     
+ Distance from source:    6046896.00      m
+
+
+ Station #           13     VE      G065                            
+             original x:    5484866.00    
+             original z:    2557635.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            0
+  in element        40318
+  in elastic domain
+  at xi,gamma coordinates =   -1.0000008721652252       0.99608795797119920     
+ Distance from source:    6497988.50      m
+
+
+ Station #           14     VE      G070                            
+             original x:    5686907.00    
+             original z:    2069864.88    
+ Closest estimate found:    2.32830644E-10  m away
+  in rank            0
+  in element        40363
+  in elastic domain
+  at xi,gamma coordinates =  -0.99999877000124249       0.99608770898087939     
+ Distance from source:    6936712.00      m
+
+
+ Station #           15     VE      G075                            
+             original x:    5845667.00    
+             original z:    1566341.75    
+ Closest estimate found:    4.65661287E-10  m away
+  in rank            0
+  in element        40741
+  in elastic domain
+  at xi,gamma coordinates =    1.0000006104968608       0.99608759316950768     
+ Distance from source:    7362231.00      m
+
+
+ Station #           16     VE      G080                            
+             original x:    5959938.50    
+             original z:    1050897.88    
+ Closest estimate found:    4.65661287E-10  m away
+  in rank            0
+  in element          282
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999939564683560       -1.0092022240277607     
+ Distance from source:    7773735.50      m
+
+
+ Station #           17     VE      G085                            
+             original x:    6028851.00    
+             original z:    527456.125    
+ Closest estimate found:    1.04125031E-09  m away
+  in rank            0
+  in element          342
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000008002651701       -1.0091996215946351     
+ Distance from source:    8170442.50      m
+
+
+ Station #           18     VE      G090                            
+             original x:    6051880.00    
+             original z:    0.00000000    
+ Closest estimate found:    0.00000000      m away
+  in rank            0
+  in element          402
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000000000000000       -1.0092000000002839     
+ Distance from source:    8551597.00      m
+
+
+ Station #           19     VE      G095                            
+             original x:    6028851.00    
+             original z:   -527456.125    
+ Closest estimate found:    0.00000000      m away
+  in rank            2
+  in element        38926
+  in elastic domain
+  at xi,gamma coordinates =  -0.99999919973486240       0.99608781437552152     
+ Distance from source:    8916472.00      m
+
+
+ Station #           20     VE      G100                            
+             original x:    5959938.50    
+             original z:   -1050897.88    
+ Closest estimate found:    9.59985313E-10  m away
+  in rank            2
+  in element           76
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000006043531586       -1.0092022240269736     
+ Distance from source:    9264375.00      m
+
+
+ Station #           21     VE      G105                            
+             original x:    5845667.00    
+             original z:   -1566341.75    
+ Closest estimate found:    6.98491931E-10  m away
+  in rank            2
+  in element          135
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999938950277112       -1.0092001417684593     
+ Distance from source:    9594643.00      m
+
+
+ Station #           22     VE      G110                            
+             original x:    5686907.00    
+             original z:   -2069864.88    
+ Closest estimate found:    0.00000000      m away
+  in rank            2
+  in element          195
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999877000107140       -1.0091998694328255     
+ Distance from source:    9906646.00      m
+
+
+ Station #           23     VE      G115                            
+             original x:    5484866.00    
+             original z:   -2557635.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            2
+  in element          255
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000008721654410       -1.0091992839260637     
+ Distance from source:    10199792.0      m
+
+
+ Station #           24     VE      G120                            
+             original x:    5241082.00    
+             original z:   -3025940.00    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            2
+  in element        39151
+  in elastic domain
+  at xi,gamma coordinates =  -0.99999992558942763       0.99608754249887288     
+ Distance from source:    10473522.0      m
+
+
+ Station #           25     VE      G125                            
+             original x:    4957410.00    
+             original z:   -3471215.75    
+ Closest estimate found:    4.65661287E-10  m away
+  in rank            2
+  in element        39196
+  in elastic domain
+  at xi,gamma coordinates =   -1.0000001803970722       0.99608663924211904     
+ Distance from source:    10727315.0      m
+
+
+ Station #           26     VE      G130                            
+             original x:    4636009.00    
+             original z:   -3890073.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element           35
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000007661161661       -1.0092013544488392     
+ Distance from source:    10960688.0      m
+
+
+ Station #           27     VE      G135                            
+             original x:    4279325.50    
+             original z:   -4279325.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element           95
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000000000001523       -1.0091980010542705     
+ Distance from source:    11173196.0      m
+
+
+ Station #           28     VE      G140                            
+             original x:    3890073.50    
+             original z:   -4636009.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element        54420
+  in elastic domain
+  at xi,gamma coordinates =   0.99999923388371748       0.99608707747046599     
+ Distance from source:    11364436.0      m
+
+
+ Station #           29     VE      G145                            
+             original x:    3471215.75    
+             original z:   -4957410.00    
+ Closest estimate found:    4.65661287E-10  m away
+  in rank            3
+  in element          215
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000001803969543       -1.0092023849556653     
+ Distance from source:    11534043.0      m
+
+
+ Station #           30     VE      G150                            
+             original x:    3025940.00    
+             original z:   -5241082.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element          275
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999992558943351       -1.0092002609200474     
+ Distance from source:    11681695.0      m
+
+
+ Station #           31     VE      G155                            
+             original x:    2557635.00    
+             original z:   -5484866.00    
+ Closest estimate found:    4.65661287E-10  m away
+  in rank            3
+  in element          335
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999912783464207       -1.0091992839251964     
+ Distance from source:    11807109.0      m
+
+
+ Station #           32     VE      G160                            
+             original x:    2069864.88    
+             original z:   -5686907.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element        54600
+  in elastic domain
+  at xi,gamma coordinates =    1.0000012299988790       0.99608770898126775     
+ Distance from source:    11910048.0      m
+
+
+ Station #           33     VE      G165                            
+             original x:    1566341.75    
+             original z:   -5845667.00    
+ Closest estimate found:    9.59985313E-10  m away
+  in rank            3
+  in element        54171
+  in elastic domain
+  at xi,gamma coordinates =  -0.99999938950272049       0.99608759316951845     
+ Distance from source:    11990316.0      m
+
+
+ Station #           34     VE      G170                            
+             original x:    1050897.88    
+             original z:   -5959938.50    
+ Closest estimate found:    2.32830644E-10  m away
+  in rank            3
+  in element          515
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000006043531438       -1.0092022240266985     
+ Distance from source:    12047760.0      m
+
+
+ Station #           35     VE      G175                            
+             original x:    527456.125    
+             original z:   -6028851.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element          575
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999919973509488       -1.0091996215949204     
+ Distance from source:    12082269.0      m
+
+
+ Station #           36     VE      A005H001                        
+             original x:    527545.000    
+             original z:    6029867.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element           60
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000010307953153      -0.53999893060366966     
+ Distance from source:    527682.188      m
+
+
+ Station #           37     VE      A005H010                        
+             original x:    528329.375    
+             original z:    6038832.50    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            1
+  in element         1420
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999930631651279      -0.40000004425060348     
+ Distance from source:    528338.312      m
+
+
+ Station #           38     VE      A005H030                        
+             original x:    530072.500    
+             original z:    6058756.50    
+ Closest estimate found:    9.38570333E-10  m away
+  in rank            1
+  in element         4140
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999967596023087       0.79999794559717641     
+ Distance from source:    530340.438      m
+
+
+ Station #           39     VE      A005H050                        
+             original x:    531815.625    
+             original z:    6078680.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element         7547
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000007134803364        9.1885773257544749E-007
+ Distance from source:    533086.000      m
+
+
+ Station #           40     VE      A005H060                        
+             original x:    532687.188    
+             original z:    6088642.50    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            1
+  in element         8912
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000010116151161       0.60000200457072084     
+ Distance from source:    534734.000      m
+
+
+ Station #           41     VE      A010H001                        
+             original x:    1051075.00    
+             original z:    5960943.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element          120
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999890010198123      -0.53999955547201051     
+ Distance from source:    1054188.25      m
+
+
+ Station #           42     VE      A010H010                        
+             original x:    1052637.88    
+             original z:    5969806.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element         1479
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000003229160321      -0.39999894319994472     
+ Distance from source:    1055103.75      m
+
+
+ Station #           43     VE      A010H030                        
+             original x:    1056110.88    
+             original z:    5989502.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element         4200
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999972933265935       0.79999848061647583     
+ Distance from source:    1057409.88      m
+
+
+ Station #           44     VE      A010H050                        
+             original x:    1059583.88    
+             original z:    6009198.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element         7607
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000009676355976        1.2333312415523598E-006
+ Distance from source:    1060088.38      m
+
+
+ Station #           45     VE      A010H060                        
+             original x:    1061320.25    
+             original z:    6019046.50    
+ Closest estimate found:    2.32830644E-10  m away
+  in rank            1
+  in element         8971
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000004759028831       0.60000221029633916     
+ Distance from source:    1061566.38      m
+
+
+ Station #           46     VE      A015H001                        
+             original x:    1566605.75    
+             original z:    5846652.50    
+ Closest estimate found:    2.32830644E-10  m away
+  in rank            1
+  in element          181
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999935132932416      -0.54000152682786173     
+ Distance from source:    1578725.88      m
+
+
+ Station #           47     VE      A015H010                        
+             original x:    1568935.12    
+             original z:    5855346.00    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            1
+  in element         1540
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000001044053652      -0.39999833359904313     
+ Distance from source:    1579987.38      m
+
+
+ Station #           48     VE      A015H030                        
+             original x:    1574111.50    
+             original z:    5874664.50    
+ Closest estimate found:    2.32830644E-10  m away
+  in rank            1
+  in element         4261
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999991918641784       0.79999865943250625     
+ Distance from source:    1582970.25      m
+
+
+ Station #           49     VE      A015H050                        
+             original x:    1579287.88    
+             original z:    5893983.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element         7667
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999968155445307        9.5722250110729529E-008
+ Distance from source:    1586199.88      m
+
+
+ Station #           50     VE      A015H060                        
+             original x:    1581876.12    
+             original z:    5903642.00    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            1
+  in element         9031
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999948290489915       0.60000081386691284     
+ Distance from source:    1587906.62      m
+
+
+ Station #           51     VE      A020H001                        
+             original x:    2070213.75    
+             original z:    5687865.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element          240
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000012913711949      -0.54000118016996057     
+ Distance from source:    2100268.00      m
+
+
+ Station #           52     VE      A020H010                        
+             original x:    2073291.88    
+             original z:    5696322.50    
+ Closest estimate found:    4.65661287E-10  m away
+  in rank            1
+  in element         1600
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999948305680020      -0.39999861107045509     
+ Distance from source:    2101895.00      m
+
+
+ Station #           53     VE      A020H030                        
+             original x:    2080132.25    
+             original z:    5715116.50    
+ Closest estimate found:    4.65661287E-10  m away
+  in rank            1
+  in element         4320
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000000930262567       0.79999989372777636     
+ Distance from source:    2105644.25      m
+
+
+ Station #           54     VE      A020H050                        
+             original x:    2086972.75    
+             original z:    5733910.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element         7727
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999967188787553       -1.6014734012696097E-006
+ Distance from source:    2109576.50      m
+
+
+ Station #           55     VE      A020H060                        
+             original x:    2090392.88    
+             original z:    5743307.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element         9091
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999907760187956       0.59999981221886678     
+ Distance from source:    2111610.75      m
+
+
+ Station #           56     VE      A025H001                        
+             original x:    2558066.00    
+             original z:    5485790.50    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            1
+  in element          300
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000011214749207      -0.54000104956159367     
+ Distance from source:    2617816.00      m
+
+
+ Station #           57     VE      A025H010                        
+             original x:    2561869.75    
+             original z:    5493947.00    
+ Closest estimate found:    1.04125031E-09  m away
+  in rank            1
+  in element         1659
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000002323197155      -0.40000193106292886     
+ Distance from source:    2619814.50      m
+
+
+ Station #           58     VE      A025H030                        
+             original x:    2570322.00    
+             original z:    5512073.50    
+ Closest estimate found:    4.65661287E-10  m away
+  in rank            1
+  in element         4380
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000008010215524       0.80000077100595846     
+ Distance from source:    2624361.25      m
+
+
+ Station #           59     VE      A025H050                        
+             original x:    2578774.25    
+             original z:    5530199.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element         7787
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999932357849597        1.5290300220610094E-006
+ Distance from source:    2629052.00      m
+
+
+ Station #           60     VE      A025H060                        
+             original x:    2583000.50    
+             original z:    5539262.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element         9151
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999953931938257       0.59999773902594167     
+ Distance from source:    2631451.25      m
+
+
+ Station #           61     VE      A030H001                        
+             original x:    3026450.00    
+             original z:    5241965.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element          360
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999961002576376      -0.53999863232157219     
+ Distance from source:    3130382.50      m
+
+
+ Station #           62     VE      A030H010                        
+             original x:    3030950.00    
+             original z:    5249759.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element         1719
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999945567789950      -0.39999808816963806     
+ Distance from source:    3132753.50      m
+
+
+ Station #           63     VE      A030H030                        
+             original x:    3040950.00    
+             original z:    5267080.00    
+ Closest estimate found:    4.65661287E-10  m away
+  in rank            1
+  in element         4441
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999962958825339       0.79999869470456864     
+ Distance from source:    3138108.25      m
+
+
+ Station #           64     VE      A030H050                        
+             original x:    3050950.00    
+             original z:    5284400.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element         7847
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000001523703190       -5.3870390673077165E-007
+ Distance from source:    3143581.00      m
+
+
+ Station #           65     VE      A030H060                        
+             original x:    3055950.00    
+             original z:    5293060.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element         9212
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000005185828729       0.60000183644929506     
+ Distance from source:    3146361.50      m
+
+
+ Station #           66     VE      A035H001                        
+             original x:    3471800.75    
+             original z:    4958245.50    
+ Closest estimate found:    4.65661287E-10  m away
+  in rank            1
+  in element          421
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000004421048474      -0.53999999609628868     
+ Distance from source:    3636991.75      m
+
+
+ Station #           67     VE      A035H010                        
+             original x:    3476963.00    
+             original z:    4965618.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element         1779
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999973536379594      -0.39999884576481515     
+ Distance from source:    3639732.75      m
+
+
+ Station #           68     VE      A035H030                        
+             original x:    3488434.50    
+             original z:    4982001.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element         4501
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999991312931591       0.80000115633442870     
+ Distance from source:    3645896.50      m
+
+
+ Station #           69     VE      A035H050                        
+             original x:    3499906.00    
+             original z:    4998384.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element         7907
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000004360734764        1.1584333000315294E-006
+ Distance from source:    3652159.50      m
+
+
+ Station #           70     VE      A035H060                        
+             original x:    3505641.75    
+             original z:    5006575.50    
+ Closest estimate found:    1.04125031E-09  m away
+  in rank            1
+  in element         9271
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999968832499886       0.59999984025642195     
+ Distance from source:    3655327.75      m
+
+
+ Station #           71     VE      A040H001                        
+             original x:    3890729.00    
+             original z:    4636790.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element          480
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999949925469545      -0.54000070357839725     
+ Distance from source:    4136678.25      m
+
+
+ Station #           72     VE      A040H010                        
+             original x:    3896514.25    
+             original z:    4643685.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element         1839
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999976114434996      -0.40000025206088663     
+ Distance from source:    4139786.00      m
+
+
+ Station #           73     VE      A040H030                        
+             original x:    3909370.00    
+             original z:    4659005.50    
+ Closest estimate found:    1.31708899E-09  m away
+  in rank            1
+  in element         4560
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999921664206093       0.79999950016712540     
+ Distance from source:    4146754.25      m
+
+
+ Station #           74     VE      A040H050                        
+             original x:    3922225.75    
+             original z:    4674326.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element         7967
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000004020348565        2.2092178753968660E-006
+ Distance from source:    4153807.00      m
+
+
+ Station #           75     VE      A040H060                        
+             original x:    3928653.50    
+             original z:    4681987.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element         9332
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000000085846379       0.59999884501850076     
+ Distance from source:    4157364.75      m
+
+
+ Station #           76     VE      A045H001                        
+             original x:    4280046.50    
+             original z:    4280046.50    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            1
+  in element          541
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000000000001974      -0.53999729639775662     
+ Distance from source:    4628490.50      m
+
+
+ Station #           77     VE      A045H010                        
+             original x:    4286410.50    
+             original z:    4286410.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element         1899
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999999999972744      -0.39999796689370370     
+ Distance from source:    4631960.50      m
+
+
+ Station #           78     VE      A045H030                        
+             original x:    4300552.50    
+             original z:    4300552.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element         4620
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999999999985778       0.79999837465444079     
+ Distance from source:    4639724.50      m
+
+
+ Station #           79     VE      A045H050                        
+             original x:    4314695.00    
+             original z:    4314695.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element         8027
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000000000000000        1.2215847050500058E-006
+ Distance from source:    4647561.50      m
+
+
+ Station #           80     VE      A045H060                        
+             original x:    4321766.00    
+             original z:    4321766.00    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            1
+  in element         9391
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999999999986000       0.60000264505041434     
+ Distance from source:    4651507.50      m
+
+
+ Station #           81     VE      A050H001                        
+             original x:    4636790.50    
+             original z:    3890729.00    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            1
+  in element          600
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000005007452923      -0.54000070357837693     
+ Distance from source:    5111493.00      m
+
+
+ Station #           82     VE      A050H010                        
+             original x:    4643685.00    
+             original z:    3896514.25    
+ Closest estimate found:    1.04125031E-09  m away
+  in rank            1
+  in element         1960
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999976114437283      -0.40000025206068612     
+ Distance from source:    5115319.00      m
+
+
+ Station #           83     VE      A050H030                        
+             original x:    4659005.50    
+             original z:    3909370.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element         4681
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999921664201541       0.79999950016708077     
+ Distance from source:    5123867.50      m
+
+
+ Station #           84     VE      A050H050                        
+             original x:    4674326.50    
+             original z:    3922225.75    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element         8088
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000004020348836        2.2092181157425575E-006
+ Distance from source:    5132479.50      m
+
+
+ Station #           85     VE      A050H060                        
+             original x:    4681987.00    
+             original z:    3928653.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element         9452
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999999141536833       0.59999884501813927     
+ Distance from source:    5136809.50      m
+
+
+ Station #           86     VE      A055H001                        
+             original x:    4958245.50    
+             original z:    3471800.75    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element          660
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000004421045370      -0.53999999609687932     
+ Distance from source:    5584765.50      m
+
+
+ Station #           87     VE      A055H010                        
+             original x:    4965618.00    
+             original z:    3476963.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element         2020
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999973536360565      -0.39999884576433370     
+ Distance from source:    5588941.00      m
+
+
+ Station #           88     VE      A055H030                        
+             original x:    4982001.00    
+             original z:    3488434.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element         4740
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999991312939762       0.80000115633413249     
+ Distance from source:    5598260.50      m
+
+
+ Station #           89     VE      A055H050                        
+             original x:    4998384.00    
+             original z:    3499906.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element         8148
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000004360735726        1.1584329990861095E-006
+ Distance from source:    5607635.50      m
+
+
+ Station #           90     VE      A055H060                        
+             original x:    5006575.50    
+             original z:    3505641.75    
+ Closest estimate found:    0.00000000      m away
+  in rank            1
+  in element         9512
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999968832488562       0.59999984025624320     
+ Distance from source:    5612344.00      m
+
+
+ Station #           91     VE      A060H001                        
+             original x:    5241965.00    
+             original z:    3026450.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            0
+  in element           42
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999961002584425      -0.53999863232172285     
+ Distance from source:    6047407.50      m
+
+
+ Station #           92     VE      A060H010                        
+             original x:    5249759.50    
+             original z:    3030950.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            0
+  in element          932
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999945567786752      -0.39999808816895666     
+ Distance from source:    6051925.00      m
+
+
+ Station #           93     VE      A060H030                        
+             original x:    5267080.00    
+             original z:    3040950.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            0
+  in element         2709
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999962958820743       0.79999869470480323     
+ Distance from source:    6061999.00      m
+
+
+ Station #           94     VE      A060H050                        
+             original x:    5284400.50    
+             original z:    3050950.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            0
+  in element         4926
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999984762968064       -5.3870390667113100E-007
+ Distance from source:    6072122.50      m
+
+
+ Station #           95     VE      A060H060                        
+             original x:    5293060.50    
+             original z:    3055950.00    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            0
+  in element         5811
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000005185829410       0.60000183644889593     
+ Distance from source:    6077202.50      m
+
+
+ Station #           96     VE      A065H001                        
+             original x:    5485790.50    
+             original z:    2558066.00    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            0
+  in element          101
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999887852517522      -0.54000104956168382     
+ Distance from source:    6498538.00      m
+
+
+ Station #           97     VE      A065H010                        
+             original x:    5493947.00    
+             original z:    2561869.75    
+ Closest estimate found:    1.91997063E-09  m away
+  in rank            0
+  in element          991
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999976768020293      -0.40000193106332416     
+ Distance from source:    6503389.00      m
+
+
+ Station #           98     VE      A065H030                        
+             original x:    5512073.50    
+             original z:    2570322.00    
+ Closest estimate found:    1.04125031E-09  m away
+  in rank            0
+  in element         2769
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999919897854916       0.80000077100538947     
+ Distance from source:    6514200.50      m
+
+
+ Station #           99     VE      A065H050                        
+             original x:    5530199.50    
+             original z:    2578774.25    
+ Closest estimate found:    0.00000000      m away
+  in rank            0
+  in element         4986
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000006764214091        1.5290301123237335E-006
+ Distance from source:    6525055.00      m
+
+
+ Station #          100     VE      A065H060                        
+             original x:    5539262.50    
+             original z:    2583000.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            0
+  in element         5871
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000004606806279       0.59999773902593168     
+ Distance from source:    6530499.00      m
+
+
+ Station #          101     VE      A070H001                        
+             original x:    5687865.50    
+             original z:    2070213.75    
+ Closest estimate found:    9.59985313E-10  m away
+  in rank            0
+  in element          161
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999870862867613      -0.54000118016981258     
+ Distance from source:    6937298.00      m
+
+
+ Station #          102     VE      A070H010                        
+             original x:    5696322.50    
+             original z:    2073291.88    
+ Closest estimate found:    0.00000000      m away
+  in rank            0
+  in element         1052
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000005169433526      -0.39999861107147061     
+ Distance from source:    6942474.00      m
+
+
+ Station #          103     VE      A070H030                        
+             original x:    5715116.50    
+             original z:    2080132.25    
+ Closest estimate found:    0.00000000      m away
+  in rank            0
+  in element         2829
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999990697368635       0.79999989372777291     
+ Distance from source:    6954003.00      m
+
+
+ Station #          104     VE      A070H050                        
+             original x:    5733910.50    
+             original z:    2086972.75    
+ Closest estimate found:    0.00000000      m away
+  in rank            0
+  in element         5046
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000003281119496       -1.6014728156715891E-006
+ Distance from source:    6965571.00      m
+
+
+ Station #          105     VE      A070H060                        
+             original x:    5743307.50    
+             original z:    2090392.88    
+ Closest estimate found:    0.00000000      m away
+  in rank            0
+  in element         5931
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000009223979833       0.59999981221810650     
+ Distance from source:    6971369.00      m
+
+
+ Station #          106     VE      A075H001                        
+             original x:    5846652.50    
+             original z:    1566605.75    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            0
+  in element          221
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999935132919482      -0.54000152682743474     
+ Distance from source:    7362853.00      m
+
+
+ Station #          107     VE      A075H010                        
+             original x:    5855346.00    
+             original z:    1568935.12    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            0
+  in element         1111
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000001044052085      -0.39999833359939085     
+ Distance from source:    7368343.50      m
+
+
+ Station #          108     VE      A075H030                        
+             original x:    5874664.50    
+             original z:    1574111.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            0
+  in element         2889
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999991918635966       0.79999865943233717     
+ Distance from source:    7380570.00      m
+
+
+ Station #          109     VE      A075H050                        
+             original x:    5893983.00    
+             original z:    1579287.88    
+ Closest estimate found:    2.32830644E-10  m away
+  in rank            0
+  in element         5106
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000003184454491        9.5722746956322572E-008
+ Distance from source:    7392830.50      m
+
+
+ Station #          110     VE      A075H060                        
+             original x:    5903642.00    
+             original z:    1581876.12    
+ Closest estimate found:    0.00000000      m away
+  in rank            0
+  in element         5991
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000005170950053       0.60000081386740856     
+ Distance from source:    7398973.00      m
+
+
+ Station #          111     VE      A080H001                        
+             original x:    5960943.00    
+             original z:    1051075.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            0
+  in element          281
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000010998980089      -0.53999955547150713     
+ Distance from source:    7774392.00      m
+
+
+ Station #          112     VE      A080H010                        
+             original x:    5969806.00    
+             original z:    1052637.88    
+ Closest estimate found:    0.00000000      m away
+  in rank            0
+  in element         1172
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000003229159911      -0.39999894319965607     
+ Distance from source:    7780188.00      m
+
+
+ Station #          113     VE      A080H030                        
+             original x:    5989502.50    
+             original z:    1056110.88    
+ Closest estimate found:    0.00000000      m away
+  in rank            0
+  in element         2949
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000002706673408       0.79999848061647572     
+ Distance from source:    7793088.50      m
+
+
+ Station #          114     VE      A080H050                        
+             original x:    6009198.50    
+             original z:    1059583.88    
+ Closest estimate found:    0.00000000      m away
+  in rank            0
+  in element         5167
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000009676355426        1.2333311254277904E-006
+ Distance from source:    7806019.50      m
+
+
+ Station #          115     VE      A080H060                        
+             original x:    6019046.50    
+             original z:    1061320.25    
+ Closest estimate found:    0.00000000      m away
+  in rank            0
+  in element         6051
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999952409720760       0.60000221029674150     
+ Distance from source:    7812496.00      m
+
+
+ Station #          116     VE      A085H001                        
+             original x:    6029867.00    
+             original z:    527545.000    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            0
+  in element          341
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999896920477616      -0.53999893060332005     
+ Distance from source:    8171132.50      m
+
+
+ Station #          117     VE      A085H010                        
+             original x:    6038832.50    
+             original z:    528329.375    
+ Closest estimate found:    0.00000000      m away
+  in rank            0
+  in element         1231
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999930631658940      -0.40000004425087998     
+ Distance from source:    8177222.00      m
+
+
+ Station #          118     VE      A085H030                        
+             original x:    6058756.50    
+             original z:    530072.500    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            0
+  in element         3009
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000003240398470       0.79999794559724435     
+ Distance from source:    8190773.50      m
+
+
+ Station #          119     VE      A085H050                        
+             original x:    6078680.50    
+             original z:    531815.625    
+ Closest estimate found:    0.00000000      m away
+  in rank            0
+  in element         5226
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999928651973147        9.1885686063082292E-007
+ Distance from source:    8204351.50      m
+
+
+ Station #          120     VE      A085H060                        
+             original x:    6088642.50    
+             original z:    532687.188    
+ Closest estimate found:    0.00000000      m away
+  in rank            0
+  in element         6111
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000010116151938       0.60000200457064856     
+ Distance from source:    8211150.50      m
+
+
+ Station #          121     VE      A090H001                        
+             original x:    6052900.00    
+             original z:    0.00000000    
+ Closest estimate found:    0.00000000      m away
+  in rank            0
+  in element          402
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000000000000000      -0.53999999999997716     
+ Distance from source:    8552319.00      m
+
+
+ Station #          122     VE      A090H010                        
+             original x:    6061900.00    
+             original z:    0.00000000    
+ Closest estimate found:    0.00000000      m away
+  in rank            0
+  in element         1291
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000000000000000      -0.39999999999990510     
+ Distance from source:    8558691.00      m
+
+
+ Station #          123     VE      A090H030                        
+             original x:    6081900.00    
+             original z:    0.00000000    
+ Closest estimate found:    0.00000000      m away
+  in rank            0
+  in element         3069
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000000000000000       0.79999999999987514     
+ Distance from source:    8572868.00      m
+
+
+ Station #          124     VE      A090H050                        
+             original x:    6101900.00    
+             original z:    0.00000000    
+ Closest estimate found:    0.00000000      m away
+  in rank            0
+  in element         5286
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000000000000000        0.0000000000000000     
+ Distance from source:    8587068.00      m
+
+
+ Station #          125     VE      A090H060                        
+             original x:    6111900.00    
+             original z:    0.00000000    
+ Closest estimate found:    0.00000000      m away
+  in rank            0
+  in element         6171
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000000000000000       0.59999999999995846     
+ Distance from source:    8594177.00      m
+
+
+ Station #          126     VE      A095H001                        
+             original x:    6029867.00    
+             original z:   -527545.000    
+ Closest estimate found:    0.00000000      m away
+  in rank            2
+  in element           15
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000010307952503      -0.53999893060331583     
+ Distance from source:    8917225.00      m
+
+
+ Station #          127     VE      A095H010                        
+             original x:    6038832.50    
+             original z:   -528329.375    
+ Closest estimate found:    0.00000000      m away
+  in rank            2
+  in element          816
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999930631658007      -0.40000004425074842     
+ Distance from source:    8923868.00      m
+
+
+ Station #          128     VE      A095H030                        
+             original x:    6058756.50    
+             original z:   -530072.500    
+ Closest estimate found:    0.00000000      m away
+  in rank            2
+  in element         2415
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999967596014550       0.79999794559681314     
+ Distance from source:    8938644.00      m
+
+
+ Station #          129     VE      A095H050                        
+             original x:    6078680.50    
+             original z:   -531815.625    
+ Closest estimate found:    0.00000000      m away
+  in rank            2
+  in element         4416
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999928651974068        9.1885704404101983E-007
+ Distance from source:    8953440.00      m
+
+
+ Station #          130     VE      A095H060                        
+             original x:    6088642.50    
+             original z:   -532687.188    
+ Closest estimate found:    0.00000000      m away
+  in rank            2
+  in element         5215
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999898838479850       0.60000200457021746     
+ Distance from source:    8960846.00      m
+
+
+ Station #          131     VE      A100H001                        
+             original x:    5960943.00    
+             original z:   -1051075.00    
+ Closest estimate found:    2.32830644E-10  m away
+  in rank            2
+  in element           75
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999890010202774      -0.53999955547192857     
+ Distance from source:    9265157.00      m
+
+
+ Station #          132     VE      A100H010                        
+             original x:    5969806.00    
+             original z:   -1052637.88    
+ Closest estimate found:    0.00000000      m away
+  in rank            2
+  in element          875
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000003229159875      -0.39999894319963647     
+ Distance from source:    9272058.00      m
+
+
+ Station #          133     VE      A100H030                        
+             original x:    5989502.50    
+             original z:   -1056110.88    
+ Closest estimate found:    0.00000000      m away
+  in rank            2
+  in element         2475
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999972933265935       0.79999848061647583     
+ Distance from source:    9287405.00      m
+
+
+ Station #          134     VE      A100H050                        
+             original x:    6009198.50    
+             original z:   -1059583.88    
+ Closest estimate found:    0.00000000      m away
+  in rank            2
+  in element         4475
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000009676355976        1.2333312415522880E-006
+ Distance from source:    9302770.00      m
+
+
+ Station #          135     VE      A100H060                        
+             original x:    6019046.50    
+             original z:   -1061320.25    
+ Closest estimate found:    0.00000000      m away
+  in rank            2
+  in element         5275
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000004759027923       0.60000221029674139     
+ Distance from source:    9310460.00      m
+
+
+ Station #          136     VE      A105H001                        
+             original x:    5846652.50    
+             original z:   -1566605.75    
+ Closest estimate found:    0.00000000      m away
+  in rank            2
+  in element          135
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000006486705597      -0.54000152682845504     
+ Distance from source:    9595452.00      m
+
+
+ Station #          137     VE      A105H010                        
+             original x:    5855346.00    
+             original z:   -1568935.12    
+ Closest estimate found:    9.59985313E-10  m away
+  in rank            2
+  in element          935
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999989559456859      -0.39999833359906828     
+ Distance from source:    9602598.00      m
+
+
+ Station #          138     VE      A105H030                        
+             original x:    5874664.50    
+             original z:   -1574111.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            2
+  in element         2535
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000000808133149       0.79999865943215964     
+ Distance from source:    9618488.00      m
+
+
+ Station #          139     VE      A105H050                        
+             original x:    5893983.00    
+             original z:   -1579287.88    
+ Closest estimate found:    2.32830644E-10  m away
+  in rank            2
+  in element         4536
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000003184456712        9.5722796746974564E-008
+ Distance from source:    9634394.00      m
+
+
+ Station #          140     VE      A105H060                        
+             original x:    5903642.00    
+             original z:   -1581876.12    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            2
+  in element         5335
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999948290479834       0.60000081386685744     
+ Distance from source:    9642352.00      m
+
+
+ Station #          141     VE      A110H001                        
+             original x:    5687865.50    
+             original z:   -2070213.75    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            2
+  in element          195
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000012913710008      -0.54000118016912313     
+ Distance from source:    9907482.00      m
+
+
+ Station #          142     VE      A110H010                        
+             original x:    5696322.50    
+             original z:   -2073291.88    
+ Closest estimate found:    1.04125031E-09  m away
+  in rank            2
+  in element          996
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999948305687814      -0.39999861107105977     
+ Distance from source:    9914859.00      m
+
+
+ Station #          143     VE      A110H030                        
+             original x:    5715116.50    
+             original z:   -2080132.25    
+ Closest estimate found:    1.04125031E-09  m away
+  in rank            2
+  in element         2596
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999990697388197       0.79999989372772762     
+ Distance from source:    9931262.00      m
+
+
+ Station #          144     VE      A110H050                        
+             original x:    5733910.50    
+             original z:   -2086972.75    
+ Closest estimate found:    0.00000000      m away
+  in rank            2
+  in element         4595
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999967188782624       -1.6014734379012807E-006
+ Distance from source:    9947678.00      m
+
+
+ Station #          145     VE      A110H060                        
+             original x:    5743307.50    
+             original z:   -2090392.88    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            2
+  in element         5395
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999907760172491       0.59999981221878440     
+ Distance from source:    9955891.00      m
+
+
+ Station #          146     VE      A115H001                        
+             original x:    5485790.50    
+             original z:   -2558066.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            2
+  in element          255
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000011214752043      -0.54000104956132611     
+ Distance from source:    10200653.0      m
+
+
+ Station #          147     VE      A115H010                        
+             original x:    5493947.00    
+             original z:   -2561869.75    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            2
+  in element         1055
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000002323199932      -0.40000193106266613     
+ Distance from source:    10208247.0      m
+
+
+ Station #          148     VE      A115H030                        
+             original x:    5512073.50    
+             original z:   -2570322.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            2
+  in element         2656
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999919897823197       0.80000077100512224     
+ Distance from source:    10225132.0      m
+
+
+ Station #          149     VE      A115H050                        
+             original x:    5530199.50    
+             original z:   -2578774.25    
+ Closest estimate found:    0.00000000      m away
+  in rank            2
+  in element         4656
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000006764212293        1.5290299602340688E-006
+ Distance from source:    10242028.0      m
+
+
+ Station #          150     VE      A115H060                        
+             original x:    5539262.50    
+             original z:   -2583000.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            2
+  in element         5456
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000004606803752       0.59999773902593989     
+ Distance from source:    10250480.0      m
+
+
+ Station #          151     VE      A120H001                        
+             original x:    5241965.00    
+             original z:   -3026450.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            2
+  in element          315
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999961002616156      -0.53999863232211398     
+ Distance from source:    10474405.0      m
+
+
+ Station #          152     VE      A120H010                        
+             original x:    5249759.50    
+             original z:   -3030950.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            2
+  in element         1116
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000005443218141      -0.39999808816948657     
+ Distance from source:    10482203.0      m
+
+
+ Station #          153     VE      A120H030                        
+             original x:    5267080.00    
+             original z:   -3040950.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            2
+  in element         2715
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000003704119484       0.79999869470500873     
+ Distance from source:    10499538.0      m
+
+
+ Station #          154     VE      A120H050                        
+             original x:    5284400.50    
+             original z:   -3050950.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            2
+  in element         4716
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999984762930483       -5.3870451487916545E-007
+ Distance from source:    10516882.0      m
+
+
+ Station #          155     VE      A120H060                        
+             original x:    5293060.50    
+             original z:   -3055950.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            2
+  in element         5516
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000005185825427       0.60000183644907334     
+ Distance from source:    10525558.0      m
+
+
+ Station #          156     VE      A125H001                        
+             original x:    4958245.50    
+             original z:   -3471800.75    
+ Closest estimate found:    0.00000000      m away
+  in rank            2
+  in element          375
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999955789534178      -0.53999999609652816     
+ Distance from source:    10728220.0      m
+
+
+ Station #          157     VE      A125H010                        
+             original x:    4965618.00    
+             original z:   -3476963.00    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            2
+  in element         1176
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000002646365507      -0.39999884576457850     
+ Distance from source:    10736206.0      m
+
+
+ Station #          158     VE      A125H030                        
+             original x:    4982001.00    
+             original z:   -3488434.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            2
+  in element         2776
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999991312933811       0.80000115633439706     
+ Distance from source:    10753958.0      m
+
+
+ Station #          159     VE      A125H050                        
+             original x:    4998384.00    
+             original z:   -3499906.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            2
+  in element         4775
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000004360734764        1.1584333000314574E-006
+ Distance from source:    10771718.0      m
+
+
+ Station #          160     VE      A125H060                        
+             original x:    5006575.50    
+             original z:   -3505641.75    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            2
+  in element         5576
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000003116751655       0.59999984025652786     
+ Distance from source:    10780601.0      m
+
+
+ Station #          161     VE      A130H001                        
+             original x:    4636790.50    
+             original z:   -3890729.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element           35
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999949925470766      -0.54000070357837660     
+ Distance from source:    10961612.0      m
+
+
+ Station #          162     VE      A130H010                        
+             original x:    4643685.00    
+             original z:   -3896514.25    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element         1305
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999976114447253      -0.40000025206090828     
+ Distance from source:    10969771.0      m
+
+
+ Station #          163     VE      A130H030                        
+             original x:    4659005.50    
+             original z:   -3909370.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element         3845
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999921664220681       0.79999950016737453     
+ Distance from source:    10987907.0      m
+
+
+ Station #          164     VE      A130H050                        
+             original x:    4674326.50    
+             original z:   -3922225.75    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element         7020
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000004020348565        2.2092178753967131E-006
+ Distance from source:    11006050.0      m
+
+
+ Station #          165     VE      A130H060                        
+             original x:    4681987.00    
+             original z:   -3928653.50    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            3
+  in element         8291
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000000085846548       0.59999884501856904     
+ Distance from source:    11015123.0      m
+
+
+ Station #          166     VE      A135H001                        
+             original x:    4280046.50    
+             original z:   -4280046.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element           95
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000000000003046      -0.53999729639830196     
+ Distance from source:    11174139.0      m
+
+
+ Station #          167     VE      A135H010                        
+             original x:    4286410.50    
+             original z:   -4286410.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element         1365
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000000000001232      -0.39999796689400668     
+ Distance from source:    11182456.0      m
+
+
+ Station #          168     VE      A135H030                        
+             original x:    4300552.50    
+             original z:   -4300552.50    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            3
+  in element         3906
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999999999985556       0.79999837465477874     
+ Distance from source:    11200941.0      m
+
+
+ Station #          169     VE      A135H050                        
+             original x:    4314695.00    
+             original z:   -4314695.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element         7080
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000000000000000        1.2215847050500058E-006
+ Distance from source:    11219432.0      m
+
+
+ Station #          170     VE      A135H060                        
+             original x:    4321766.00    
+             original z:   -4321766.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element         8351
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999999999995470       0.60000264504980605     
+ Distance from source:    11228679.0      m
+
+
+ Station #          171     VE      A140H001                        
+             original x:    3890729.00    
+             original z:   -4636790.50    
+ Closest estimate found:    1.04125031E-09  m away
+  in rank            3
+  in element          156
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999949925459453      -0.54000070357830499     
+ Distance from source:    11365395.0      m
+
+
+ Station #          172     VE      A140H010                        
+             original x:    3896514.25    
+             original z:   -4643685.00    
+ Closest estimate found:    4.65661287E-10  m away
+  in rank            3
+  in element         1426
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999976114424316      -0.40000025206085105     
+ Distance from source:    11373854.0      m
+
+
+ Station #          173     VE      A140H030                        
+             original x:    3909370.00    
+             original z:   -4659005.50    
+ Closest estimate found:    4.65661287E-10  m away
+  in rank            3
+  in element         3965
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000007833581006       0.79999950016684973     
+ Distance from source:    11392654.0      m
+
+
+ Station #          174     VE      A140H050                        
+             original x:    3922225.75    
+             original z:   -4674326.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element         7141
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000004020349067        2.2092180593015204E-006
+ Distance from source:    11411458.0      m
+
+
+ Station #          175     VE      A140H060                        
+             original x:    3928653.50    
+             original z:   -4681987.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element         8410
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000000085844727       0.59999884501781375     
+ Distance from source:    11420861.0      m
+
+
+ Station #          176     VE      A145H001                        
+             original x:    3471800.75    
+             original z:   -4958245.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element          215
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000004421048108      -0.53999999609614324     
+ Distance from source:    11535016.0      m
+
+
+ Station #          177     VE      A145H010                        
+             original x:    3476963.00    
+             original z:   -4965618.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element         1486
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999973536364084      -0.39999884576446443     
+ Distance from source:    11543601.0      m
+
+
+ Station #          178     VE      A145H030                        
+             original x:    3488434.50    
+             original z:   -4982001.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element         4026
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000000868707721       0.80000115633452928     
+ Distance from source:    11562680.0      m
+
+
+ Station #          179     VE      A145H050                        
+             original x:    3499906.00    
+             original z:   -4998384.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element         7201
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000004360735824        1.1584330132390136E-006
+ Distance from source:    11581762.0      m
+
+
+ Station #          180     VE      A145H060                        
+             original x:    3505641.75    
+             original z:   -5006575.50    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            3
+  in element         8470
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000003116750869       0.59999984025629893     
+ Distance from source:    11591304.0      m
+
+
+ Station #          181     VE      A150H001                        
+             original x:    3026450.00    
+             original z:   -5241965.00    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            3
+  in element          275
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000003899739618      -0.53999863232126888     
+ Distance from source:    11682680.0      m
+
+
+ Station #          182     VE      A150H010                        
+             original x:    3030950.00    
+             original z:   -5249759.50    
+ Closest estimate found:    1.04125031E-09  m away
+  in rank            3
+  in element         1545
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000005443219218      -0.39999808816934185     
+ Distance from source:    11691374.0      m
+
+
+ Station #          183     VE      A150H030                        
+             original x:    3040950.00    
+             original z:   -5267080.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element         4086
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000003704121188       0.79999869470430507     
+ Distance from source:    11710696.0      m
+
+
+ Station #          184     VE      A150H050                        
+             original x:    3050950.00    
+             original z:   -5284400.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element         7260
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999984762937999       -5.3870454159402726E-007
+ Distance from source:    11730020.0      m
+
+
+ Station #          185     VE      A150H060                        
+             original x:    3055950.00    
+             original z:   -5293060.50    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            3
+  in element         8530
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000005185826761       0.60000183644922711     
+ Distance from source:    11739683.0      m
+
+
+ Station #          186     VE      A155H001                        
+             original x:    2558066.00    
+             original z:   -5485790.50    
+ Closest estimate found:    4.65661287E-10  m away
+  in rank            3
+  in element          336
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000011214749580      -0.54000104956195960     
+ Distance from source:    11808105.0      m
+
+
+ Station #          187     VE      A155H010                        
+             original x:    2561869.75    
+             original z:   -5493947.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element         1606
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000002323198525      -0.40000193106277282     
+ Distance from source:    11816892.0      m
+
+
+ Station #          188     VE      A155H030                        
+             original x:    2570322.00    
+             original z:   -5512073.50    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            3
+  in element         4146
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000008010216230       0.80000077100565781     
+ Distance from source:    11836421.0      m
+
+
+ Station #          189     VE      A155H050                        
+             original x:    2578774.25    
+             original z:   -5530199.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element         7320
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000006764214091        1.5290301123230013E-006
+ Distance from source:    11855951.0      m
+
+
+ Station #          190     VE      A155H060                        
+             original x:    2583000.50    
+             original z:   -5539262.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element         8590
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000004606807127       0.59999773902585107     
+ Distance from source:    11865716.0      m
+
+
+ Station #          191     VE      A160H001                        
+             original x:    2070213.75    
+             original z:   -5687865.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element          395
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999870862882789      -0.54000118016952081     
+ Distance from source:    11911053.0      m
+
+
+ Station #          192     VE      A160H010                        
+             original x:    2073291.88    
+             original z:   -5696322.50    
+ Closest estimate found:    2.32830644E-10  m away
+  in rank            3
+  in element         1666
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000005169430679      -0.39999861107079354     
+ Distance from source:    11919917.0      m
+
+
+ Station #          193     VE      A160H030                        
+             original x:    2080132.25    
+             original z:   -5715116.50    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            3
+  in element         4205
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999990697377028       0.79999989372730063     
+ Distance from source:    11939614.0      m
+
+
+ Station #          194     VE      A160H050                        
+             original x:    2086972.75    
+             original z:   -5733910.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element         7380
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000003281121694       -1.6014725229918069E-006
+ Distance from source:    11959313.0      m
+
+
+ Station #          195     VE      A160H060                        
+             original x:    2090392.88    
+             original z:   -5743307.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element         8651
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999907760189011       0.59999981221838405     
+ Distance from source:    11969163.0      m
+
+
+ Station #          196     VE      A165H001                        
+             original x:    1566605.75    
+             original z:   -5846652.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element          455
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999935132972184      -0.54000152682726144     
+ Distance from source:    11991327.0      m
+
+
+ Station #          197     VE      A165H010                        
+             original x:    1568935.12    
+             original z:   -5855346.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element         1726
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999989559432023      -0.39999833359857134     
+ Distance from source:    12000251.0      m
+
+
+ Station #          198     VE      A165H030                        
+             original x:    1574111.50    
+             original z:   -5874664.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element         4265
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999991918683195       0.79999865943250315     
+ Distance from source:    12020080.0      m
+
+
+ Station #          199     VE      A165H050                        
+             original x:    1579287.88    
+             original z:   -5893983.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element         7441
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999968155402863        9.5723071844709135E-008
+ Distance from source:    12039911.0      m
+
+
+ Station #          200     VE      A165H060                        
+             original x:    1581876.12    
+             original z:   -5903642.00    
+ Closest estimate found:    4.65661287E-10  m away
+  in rank            3
+  in element         8710
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000005170955641       0.60000081386755355     
+ Distance from source:    12049826.0      m
+
+
+ Station #          201     VE      A170H001                        
+             original x:    1051075.00    
+             original z:   -5960943.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element          516
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999890010204240      -0.53999955547210854     
+ Distance from source:    12048776.0      m
+
+
+ Station #          202     VE      A170H010                        
+             original x:    1052637.88    
+             original z:   -5969806.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element         1786
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000003229160606      -0.39999894320003665     
+ Distance from source:    12057742.0      m
+
+
+ Station #          203     VE      A170H030                        
+             original x:    1056110.88    
+             original z:   -5989502.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element         4325
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000002706673408       0.79999848061647572     
+ Distance from source:    12077666.0      m
+
+
+ Station #          204     VE      A170H050                        
+             original x:    1059583.88    
+             original z:   -6009198.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element         7501
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000009676356032        1.2333307123524626E-006
+ Distance from source:    12097590.0      m
+
+
+ Station #          205     VE      A170H060                        
+             original x:    1061320.25    
+             original z:   -6019046.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element         8771
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000004759027854       0.60000221029656908     
+ Distance from source:    12107553.0      m
+
+
+ Station #          206     VE      A175H001                        
+             original x:    527545.000    
+             original z:   -6029867.00    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element          575
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999896920499109      -0.53999893060329351     
+ Distance from source:    12083288.0      m
+
+
+ Station #          207     VE      A175H010                        
+             original x:    528329.375    
+             original z:   -6038832.50    
+ Closest estimate found:    9.31322575E-10  m away
+  in rank            3
+  in element         1846
+  in acoustic domain
+  at xi,gamma coordinates =   -1.0000006936831889      -0.40000004425087415     
+ Distance from source:    12092280.0      m
+
+
+ Station #          208     VE      A175H030                        
+             original x:    530072.500    
+             original z:   -6058756.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element         4385
+  in acoustic domain
+  at xi,gamma coordinates =    1.0000003240400468       0.79999794559755699     
+ Distance from source:    12112261.0      m
+
+
+ Station #          209     VE      A175H050                        
+             original x:    531815.625    
+             original z:   -6078680.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element         7560
+  in acoustic domain
+  at xi,gamma coordinates =   0.99999928651994052        9.1885682329219320E-007
+ Distance from source:    12132242.0      m
+
+
+ Station #          210     VE      A175H060                        
+             original x:    532687.188    
+             original z:   -6088642.50    
+ Closest estimate found:    0.00000000      m away
+  in rank            3
+  in element         8831
+  in acoustic domain
+  at xi,gamma coordinates =  -0.99999898838457046       0.60000200457038066     
+ Distance from source:    12142233.0      m
+
+ maximum error in location of all the receivers:    1.91997063E-09  m
+
+ end of receiver detection
+
+ found a total of          210  receivers, this is okay
+
+
+ Preparing timerun:
+
+
+ Checking mesh and stability
+
+ ********
+ Model: P (or PI) velocity min,max =    207.31000378850351        13465.660179068900     
+ Model: S velocity min,max         =    3200.0000000000000        7138.8211860958572     
+ Model: density min,max            =    7.3806200816761702E-005   11841.129882812500     
+ ********
+
+
+ *********************************************
+ *** Verification of simulation parameters ***
+ *********************************************
+
+ *** Max grid size =    20448.086363637998     
+ *** Min grid size =    4347.8260869546693     
+ *** Max/min ratio =    4.7030598636387433     
+
+ *** Minimum GLL point distance  =    750.75288976494710     
+ *** Average GLL point distance  =    1086.9565217386673     
+
+ *** Minimum period resolved     =    53.950454043994966     
+ *** Maximum frequency resolved  =    1.8535525191030463E-002 Hz
+
+ *** Maximum suggested time step                 =    6.2530899296630332E-002
+ *** Maximum suggested (Ricker) source frequency =    7.4142100764121857E-003
+
+ *** for DT :    5.00000007E-02
+ *** Max CFL stability condition of the time scheme based on P wave velocity (must be below about 0.50 or so) =   0.39980234222134725     
+
+ ----
+ Number of points per wavelength:
+ ----
+   Source            1
+   maximum dominant source frequency =    1.6666675000000002E-002 Hz
+
+
+   Nb pts / lambdaP_fmax min =    5.56065464    
+   Nb pts / lambdaP_fmax max =    226.011871    
+
+   Nb pts / lambdaS_fmax min =    37.5585098    
+   Nb pts / lambdaS_fmax max =    83.7449646    
+
+ -----------------------------------------
+
+ histogram of min number of points per S wavelength in solid regions:
+
+ there are       144720  elements out of       304830  in solid regions
+   (i.e.,    47.4756432     % of the total)
+
+ (too small = poor resolution of calculations -
+  too big = wasting memory and CPU time)
+ (threshold value is around 4.5 points per S wavelength
+  in elastic regions and 5.5 per P wavelength in fluid regions):
+
+   37.5585098      -    39.8678322            1080    0.746268630      %
+   39.8678322      -    42.1771545               0     0.00000000      %
+   42.1771545      -    44.4864769            1080    0.746268630      %
+   44.4864769      -    46.7957993               0     0.00000000      %
+   46.7957993      -    49.1051216            1080    0.746268630      %
+   49.1051216      -    51.4144440               0     0.00000000      %
+   51.4144440      -    53.7237663            7560     5.22388077      %
+   53.7237663      -    56.0330887            9720     6.71641779      %
+   56.0330887      -    58.3424110            6480     4.47761202      %
+   58.3424110      -    60.6517334            8640     5.97014904      %
+   60.6517334      -    62.9610558            1080    0.746268630      %
+   62.9610558      -    65.2703781            1080    0.746268630      %
+   65.2703781      -    67.5797043            2160     1.49253726      %
+   67.5797043      -    69.8890228            1080    0.746268630      %
+   69.8890228      -    72.1983490            1080    0.746268630      %
+   72.1983490      -    74.5076675            4320     2.98507452      %
+   74.5076675      -    76.8169937           14040     9.70149231      %
+   76.8169937      -    79.1263199           20520     14.1791048      %
+   79.1263199      -    81.4356384           23760     16.4179096      %
+   81.4356384      -    83.7449646           39960     27.6119404      %
+
+ total percentage =    100.00000000000001       %
+
+ -----------------------------------------
+
+ histogram of min number of points per P wavelength in fluid regions:
+
+ there are       160110  elements out of       304830  in fluid regions
+   (i.e.,    52.5243568     % of the total)
+
+ (too small = poor resolution of calculations -
+  too big = wasting memory and CPU time)
+ (threshold value is around 4.5 points per S wavelength
+  in elastic regions and 5.5 per P wavelength in fluid regions):
+
+   5.56065464      -    16.5832157           49680     31.0286674      %
+   16.5832157      -    27.6057758               0     0.00000000      %
+   27.6057758      -    38.6283379               0     0.00000000      %
+   38.6283379      -    49.6508980               0     0.00000000      %
+   49.6508980      -    60.6734581               0     0.00000000      %
+   60.6734581      -    71.6960220               0     0.00000000      %
+   71.6960220      -    82.7185822               0     0.00000000      %
+   82.7185822      -    93.7411423               0     0.00000000      %
+   93.7411423      -    104.763702               0     0.00000000      %
+   104.763702      -    115.786263           10024     6.26069593      %
+   115.786263      -    126.808823           22848     14.2701893      %
+   126.808823      -    137.831390           19424     12.1316595      %
+   137.831390      -    148.853943           16176     10.1030540      %
+   148.853943      -    159.876511            2480     1.54893506      %
+   159.876511      -    170.899063            1560    0.974330127      %
+   170.899063      -    181.921631             896    0.559615254      %
+   181.921631      -    192.944199              32     1.99862588E-02  %
+   192.944199      -    203.966751               0     0.00000000      %
+   203.966751      -    214.989319           18452     11.5245771      %
+   214.989319      -    226.011871           18538     11.5782900      %
+
+ total percentage =    100.00000000000000       %
+
+
+ total number of elements in fluid and solid regions =       304830
+
+ mesh resolution output files:
+   written file: ./OUTPUT_FILES/mesh00000_res_minimum_period.vtk
+   written file: ./OUTPUT_FILES/mesh00000_res_dt_suggested.vtk
+
+ Preparing timerun constants
+
+ Preparing array allocations
+   arrays for acoustic domains
+   arrays for elastic domains
+   done initialization
+
+ Attenuation:
+   viscoelastic  attenuation:  F (shear & bulk attenuation in elastic domains)
+   viscoacoustic attenuation:  T (bulk attenuation in acoustic domains)
+   poro-fluid    attenuation:  F (viscous attenuation in poroelastic domains)
+   permittivity  attenuation:  F (for electromagnetic materials)
+
+ Preparing attenuation
+   The code uses a constant Q quality factor, but approximated
+   based on a series of Zener standard linear solids (SLS).
+   Approximation is performed in the following frequency band:
+
+   number of SLS bodies:            3
+
+   Attenuation in viscoelastic or viscoacoustic parts of the model:
+   reference frequency (Hz) :    6.66667009E-03
+                period  (s) :    149.999924    
+
+   assuming velocity model given at unrelaxed state (infinite frequency)
+
+ Preparing mass matrices
+   initializing mass matrices
+   inverting mass matrices
+
+
+ Preparing source time function
+   time stepping scheme:   Newmark
+   time stepping stages:            1
+   time step size      :    5.00000007E-02
+
+   number of time steps:        60000
+   number of sources   :            1
+
+   saving the source time function in a text file...
+
+ preparing optimized arrays
+   fused array done
+
+ Elapsed time for preparing timerun in seconds =    1.4594810000000003     
+
+ ************
+  time loop
+ ************
+               scheme:         Newmark
+
+            time step:    5.00000007E-02  s
+ number of time steps:        60000
+ total simulated time:    3000.00000      seconds
+ start time:  -179.999908      seconds
+
+
+ =========================================
+ =  T i m e  e v o l u t i o n  l o o p  =
+ =========================================
+
+
+ Starting time iteration loop ...
+
+
+ ******************************************************************
+ Time step #       5 out of   60000
+ ******************************************************************
+ Time: -1.797999E+02 s
+ We have done    6.66677766E-03 % of the total
+ Max norm of vector field in solid (elastic) =    4.04173806E-10
+ Max absolute value of scalar field in fluid (acoustic) =    2.03811057E-09
+ Elapsed time in seconds =   0.45099997520446777     
+ Elapsed time in hh:mm:ss =      0 h 00 m 00 s
+ Mean elapsed time per time step in seconds =    9.0199995040893557E-002
+ Time steps remaining =        59995
+ Estimated remaining time in seconds =    5411.5487024784088     
+ Estimated remaining time in hh:mm:ss =      1 h 30 m 11 s
+ Estimated total run time in seconds =    5411.9997024536133     
+ Estimated total run time in hh:mm:ss =      1 h 30 m 11 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:20
+
+
+ ******************************************************************
+ Time step #    1200 out of   60000
+ ******************************************************************
+ Time: -1.200499E+02 s
+ We have done    1.99836659     % of the total
+ Max norm of vector field in solid (elastic) =    1.45244974E-06
+ Max absolute value of scalar field in fluid (acoustic) =    2.16144286E-02
+ Elapsed time in seconds =    81.526999950408936     
+ Elapsed time in hh:mm:ss =      0 h 01 m 21 s
+ Mean elapsed time per time step in seconds =    6.7939166625340774E-002
+ Time steps remaining =        58800
+ Estimated remaining time in seconds =    3994.8229975700374     
+ Estimated remaining time in hh:mm:ss =      1 h 06 m 34 s
+ Estimated total run time in seconds =    4076.3499975204463     
+ Estimated total run time in hh:mm:ss =      1 h 07 m 56 s
+ The run will finish approximately on: Tue Nov 24, 2026 15:58
+
+
+ ******************************************************************
+ Time step #    2400 out of   60000
+ ******************************************************************
+ Time: -6.004991E+01 s
+ We have done    3.99839997     % of the total
+ Max norm of vector field in solid (elastic) =    3.12609118E-05
+ Max absolute value of scalar field in fluid (acoustic) =   0.901305318    
+ Elapsed time in seconds =    162.73200011253357     
+ Elapsed time in hh:mm:ss =      0 h 02 m 42 s
+ Mean elapsed time per time step in seconds =    6.7805000046888983E-002
+ Time steps remaining =        57600
+ Estimated remaining time in seconds =    3905.5680027008052     
+ Estimated remaining time in hh:mm:ss =      1 h 05 m 05 s
+ Estimated total run time in seconds =    4068.3000028133388     
+ Estimated total run time in hh:mm:ss =      1 h 07 m 48 s
+ The run will finish approximately on: Tue Nov 24, 2026 15:58
+
+
+ ******************************************************************
+ Time step #    3600 out of   60000
+ ******************************************************************
+ Time: -4.991000E-02 s
+ We have done    5.99843311     % of the total
+ Max norm of vector field in solid (elastic) =    7.03207406E-05
+ Max absolute value of scalar field in fluid (acoustic) =    1.80746067    
+ Elapsed time in seconds =    247.58400011062622     
+ Elapsed time in hh:mm:ss =      0 h 04 m 07 s
+ Mean elapsed time per time step in seconds =    6.8773333364062841E-002
+ Time steps remaining =        56400
+ Estimated remaining time in seconds =    3878.8160017331443     
+ Estimated remaining time in hh:mm:ss =      1 h 04 m 38 s
+ Estimated total run time in seconds =    4126.4000018437710     
+ Estimated total run time in hh:mm:ss =      1 h 08 m 46 s
+ The run will finish approximately on: Tue Nov 24, 2026 15:59
+
+
+ ******************************************************************
+ Time step #    4800 out of   60000
+ ******************************************************************
+ Time:   59.9501 s
+ We have done    7.99846649     % of the total
+ Max norm of vector field in solid (elastic) =    3.13106830E-05
+ Max absolute value of scalar field in fluid (acoustic) =   0.599477112    
+ Elapsed time in seconds =    334.08800005912781     
+ Elapsed time in hh:mm:ss =      0 h 05 m 34 s
+ Mean elapsed time per time step in seconds =    6.9601666678984958E-002
+ Time steps remaining =        55200
+ Estimated remaining time in seconds =    3842.0120006799698     
+ Estimated remaining time in hh:mm:ss =      1 h 04 m 02 s
+ Estimated total run time in seconds =    4176.1000007390976     
+ Estimated total run time in hh:mm:ss =      1 h 09 m 36 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:00
+
+
+ ******************************************************************
+ Time step #    6000 out of   60000
+ ******************************************************************
+ Time:  119.9501 s
+ We have done    9.99849987     % of the total
+ Max norm of vector field in solid (elastic) =    1.49823552E-06
+ Max absolute value of scalar field in fluid (acoustic) =   0.332825154    
+ Elapsed time in seconds =    415.19600009918213     
+ Elapsed time in hh:mm:ss =      0 h 06 m 55 s
+ Mean elapsed time per time step in seconds =    6.9199333349863681E-002
+ Time steps remaining =        54000
+ Estimated remaining time in seconds =    3736.7640008926387     
+ Estimated remaining time in hh:mm:ss =      1 h 02 m 16 s
+ Estimated total run time in seconds =    4151.9600009918213     
+ Estimated total run time in hh:mm:ss =      1 h 09 m 11 s
+ The run will finish approximately on: Tue Nov 24, 2026 15:59
+
+
+ Total number of time steps done:         6000
+ Writing the seismograms by main proc alone took    3.03191400      seconds
+
+
+ ******************************************************************
+ Time step #    7200 out of   60000
+ ******************************************************************
+ Time:  179.9501 s
+ We have done    11.9985332     % of the total
+ Max norm of vector field in solid (elastic) =    4.97297350E-08
+ Max absolute value of scalar field in fluid (acoustic) =    1.14702678    
+ Elapsed time in seconds =    503.48800015449524     
+ Elapsed time in hh:mm:ss =      0 h 08 m 23 s
+ Mean elapsed time per time step in seconds =    6.9928888910346557E-002
+ Time steps remaining =        52800
+ Estimated remaining time in seconds =    3692.2453344662981     
+ Estimated remaining time in hh:mm:ss =      1 h 01 m 32 s
+ Estimated total run time in seconds =    4195.7333346207934     
+ Estimated total run time in hh:mm:ss =      1 h 09 m 55 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:00
+
+
+ ******************************************************************
+ Time step #    8400 out of   60000
+ ******************************************************************
+ Time:  239.9501 s
+ We have done    13.9985666     % of the total
+ Max norm of vector field in solid (elastic) =    4.44710615E-08
+ Max absolute value of scalar field in fluid (acoustic) =    2.32832551    
+ Elapsed time in seconds =    584.25200009346008     
+ Elapsed time in hh:mm:ss =      0 h 09 m 44 s
+ Mean elapsed time per time step in seconds =    6.9553809534935729E-002
+ Time steps remaining =        51600
+ Estimated remaining time in seconds =    3588.9765720026835     
+ Estimated remaining time in hh:mm:ss =      0 h 59 m 48 s
+ Estimated total run time in seconds =    4173.2285720961436     
+ Estimated total run time in hh:mm:ss =      1 h 09 m 33 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:00
+
+
+ ******************************************************************
+ Time step #    9600 out of   60000
+ ******************************************************************
+ Time:  299.9501 s
+ We have done    15.9986000     % of the total
+ Max norm of vector field in solid (elastic) =    4.04099936E-08
+ Max absolute value of scalar field in fluid (acoustic) =    2.07903099    
+ Elapsed time in seconds =    713.23000001907349     
+ Elapsed time in hh:mm:ss =      0 h 11 m 53 s
+ Mean elapsed time per time step in seconds =    7.4294791668653493E-002
+ Time steps remaining =        50400
+ Estimated remaining time in seconds =    3744.4575001001358     
+ Estimated remaining time in hh:mm:ss =      1 h 02 m 24 s
+ Estimated total run time in seconds =    4457.6875001192093     
+ Estimated total run time in hh:mm:ss =      1 h 14 m 17 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:05
+
+
+ ******************************************************************
+ Time step #   10800 out of   60000
+ ******************************************************************
+ Time:  359.9501 s
+ We have done    17.9986324     % of the total
+ Max norm of vector field in solid (elastic) =    3.78423088E-08
+ Max absolute value of scalar field in fluid (acoustic) =    1.82477212    
+ Elapsed time in seconds =    795.24500012397766     
+ Elapsed time in hh:mm:ss =      0 h 13 m 15 s
+ Mean elapsed time per time step in seconds =    7.3633796307775709E-002
+ Time steps remaining =        49200
+ Estimated remaining time in seconds =    3622.7827783425651     
+ Estimated remaining time in hh:mm:ss =      1 h 00 m 22 s
+ Estimated total run time in seconds =    4418.0277784665432     
+ Estimated total run time in hh:mm:ss =      1 h 13 m 38 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:04
+
+
+ ******************************************************************
+ Time step #   12000 out of   60000
+ ******************************************************************
+ Time:  419.9501 s
+ We have done    19.9986668     % of the total
+ Max norm of vector field in solid (elastic) =    3.43438913E-08
+ Max absolute value of scalar field in fluid (acoustic) =    1.58746803    
+ Elapsed time in seconds =    880.22000002861023     
+ Elapsed time in hh:mm:ss =      0 h 14 m 40 s
+ Mean elapsed time per time step in seconds =    7.3351666669050852E-002
+ Time steps remaining =        48000
+ Estimated remaining time in seconds =    3520.8800001144409     
+ Estimated remaining time in hh:mm:ss =      0 h 58 m 40 s
+ Estimated total run time in seconds =    4401.1000001430511     
+ Estimated total run time in hh:mm:ss =      1 h 13 m 21 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:04
+
+
+ Total number of time steps done:        12000
+ Writing the seismograms by main proc alone took    3.56845593      seconds
+
+
+ ******************************************************************
+ Time step #   13200 out of   60000
+ ******************************************************************
+ Time:  479.9501 s
+ We have done    21.9986992     % of the total
+ Max norm of vector field in solid (elastic) =    2.93565385E-08
+ Max absolute value of scalar field in fluid (acoustic) =    1.51067126    
+ Elapsed time in seconds =    964.95800018310547     
+ Elapsed time in hh:mm:ss =      0 h 16 m 04 s
+ Mean elapsed time per time step in seconds =    7.3102878801750412E-002
+ Time steps remaining =        46800
+ Estimated remaining time in seconds =    3421.2147279219193     
+ Estimated remaining time in hh:mm:ss =      0 h 57 m 01 s
+ Estimated total run time in seconds =    4386.1727281050244     
+ Estimated total run time in hh:mm:ss =      1 h 13 m 06 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:03
+
+
+ ******************************************************************
+ Time step #   14400 out of   60000
+ ******************************************************************
+ Time:  539.9501 s
+ We have done    23.9987335     % of the total
+ Max norm of vector field in solid (elastic) =    2.72906977E-08
+ Max absolute value of scalar field in fluid (acoustic) =    1.65312207    
+ Elapsed time in seconds =    1045.3849999904633     
+ Elapsed time in hh:mm:ss =      0 h 17 m 25 s
+ Mean elapsed time per time step in seconds =    7.2596180554893280E-002
+ Time steps remaining =        45600
+ Estimated remaining time in seconds =    3310.3858333031335     
+ Estimated remaining time in hh:mm:ss =      0 h 55 m 10 s
+ Estimated total run time in seconds =    4355.7708332935963     
+ Estimated total run time in hh:mm:ss =      1 h 12 m 35 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:03
+
+
+ ******************************************************************
+ Time step #   15600 out of   60000
+ ******************************************************************
+ Time:  599.9501 s
+ We have done    25.9987659     % of the total
+ Max norm of vector field in solid (elastic) =    2.63161279E-08
+ Max absolute value of scalar field in fluid (acoustic) =    1.59404635    
+ Elapsed time in seconds =    1126.0559999942780     
+ Elapsed time in hh:mm:ss =      0 h 18 m 46 s
+ Mean elapsed time per time step in seconds =    7.2183076922710129E-002
+ Time steps remaining =        44400
+ Estimated remaining time in seconds =    3204.9286153683297     
+ Estimated remaining time in hh:mm:ss =      0 h 53 m 24 s
+ Estimated total run time in seconds =    4330.9846153626077     
+ Estimated total run time in hh:mm:ss =      1 h 12 m 10 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:02
+
+
+ ******************************************************************
+ Time step #   16800 out of   60000
+ ******************************************************************
+ Time:  659.9501 s
+ We have done    27.9988003     % of the total
+ Max norm of vector field in solid (elastic) =    2.60994142E-08
+ Max absolute value of scalar field in fluid (acoustic) =    1.31269002    
+ Elapsed time in seconds =    1207.0480000972748     
+ Elapsed time in hh:mm:ss =      0 h 20 m 07 s
+ Mean elapsed time per time step in seconds =    7.1848095243885399E-002
+ Time steps remaining =        43200
+ Estimated remaining time in seconds =    3103.8377145358490     
+ Estimated remaining time in hh:mm:ss =      0 h 51 m 43 s
+ Estimated total run time in seconds =    4310.8857146331238     
+ Estimated total run time in hh:mm:ss =      1 h 11 m 50 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:02
+
+
+ ******************************************************************
+ Time step #   18000 out of   60000
+ ******************************************************************
+ Time:  719.9501 s
+ We have done    29.9988327     % of the total
+ Max norm of vector field in solid (elastic) =    2.61748845E-08
+ Max absolute value of scalar field in fluid (acoustic) =    1.13046229    
+ Elapsed time in seconds =    1287.4939999580383     
+ Elapsed time in hh:mm:ss =      0 h 21 m 27 s
+ Mean elapsed time per time step in seconds =    7.1527444442113244E-002
+ Time steps remaining =        42000
+ Estimated remaining time in seconds =    3004.1526665687561     
+ Estimated remaining time in hh:mm:ss =      0 h 50 m 04 s
+ Estimated total run time in seconds =    4291.6466665267944     
+ Estimated total run time in hh:mm:ss =      1 h 11 m 31 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:02
+
+
+ Total number of time steps done:        18000
+ Writing the seismograms by main proc alone took    4.00243282      seconds
+
+
+ ******************************************************************
+ Time step #   19200 out of   60000
+ ******************************************************************
+ Time:  779.9501 s
+ We have done    31.9988670     % of the total
+ Max norm of vector field in solid (elastic) =    2.62450595E-08
+ Max absolute value of scalar field in fluid (acoustic) =    1.10828900    
+ Elapsed time in seconds =    1372.6740000247955     
+ Elapsed time in hh:mm:ss =      0 h 22 m 52 s
+ Mean elapsed time per time step in seconds =    7.1493437501291432E-002
+ Time steps remaining =        40800
+ Estimated remaining time in seconds =    2916.9322500526905     
+ Estimated remaining time in hh:mm:ss =      0 h 48 m 36 s
+ Estimated total run time in seconds =    4289.6062500774860     
+ Estimated total run time in hh:mm:ss =      1 h 11 m 29 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:02
+
+
+ ******************************************************************
+ Time step #   20400 out of   60000
+ ******************************************************************
+ Time:  839.9501 s
+ We have done    33.9989014     % of the total
+ Max norm of vector field in solid (elastic) =    2.55839332E-08
+ Max absolute value of scalar field in fluid (acoustic) =    1.09293878    
+ Elapsed time in seconds =    1453.4279999732971     
+ Elapsed time in hh:mm:ss =      0 h 24 m 13 s
+ Mean elapsed time per time step in seconds =    7.1246470586926333E-002
+ Time steps remaining =        39600
+ Estimated remaining time in seconds =    2821.3602352422827     
+ Estimated remaining time in hh:mm:ss =      0 h 47 m 01 s
+ Estimated total run time in seconds =    4274.7882352155793     
+ Estimated total run time in hh:mm:ss =      1 h 11 m 14 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:02
+
+
+ ******************************************************************
+ Time step #   21600 out of   60000
+ ******************************************************************
+ Time:  899.9501 s
+ We have done    35.9989319     % of the total
+ Max norm of vector field in solid (elastic) =    2.45771901E-08
+ Max absolute value of scalar field in fluid (acoustic) =    1.00489807    
+ Elapsed time in seconds =    1534.3220000267029     
+ Elapsed time in hh:mm:ss =      0 h 25 m 34 s
+ Mean elapsed time per time step in seconds =    7.1033425927162164E-002
+ Time steps remaining =        38400
+ Estimated remaining time in seconds =    2727.6835556030269     
+ Estimated remaining time in hh:mm:ss =      0 h 45 m 27 s
+ Estimated total run time in seconds =    4262.0055556297302     
+ Estimated total run time in hh:mm:ss =      1 h 11 m 02 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:01
+
+
+ ******************************************************************
+ Time step #   22800 out of   60000
+ ******************************************************************
+ Time:  959.9501 s
+ We have done    37.9989662     % of the total
+ Max norm of vector field in solid (elastic) =    2.31011512E-08
+ Max absolute value of scalar field in fluid (acoustic) =    1.15487790    
+ Elapsed time in seconds =    1615.0659999847412     
+ Elapsed time in hh:mm:ss =      0 h 26 m 55 s
+ Mean elapsed time per time step in seconds =    7.0836228069506194E-002
+ Time steps remaining =        37200
+ Estimated remaining time in seconds =    2635.1076841856302     
+ Estimated remaining time in hh:mm:ss =      0 h 43 m 55 s
+ Estimated total run time in seconds =    4250.1736841703714     
+ Estimated total run time in hh:mm:ss =      1 h 10 m 50 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:01
+
+
+ ******************************************************************
+ Time step #   24000 out of   60000
+ ******************************************************************
+ Time:  1.019950E+03 s
+ We have done    39.9990005     % of the total
+ Max norm of vector field in solid (elastic) =    2.18868728E-08
+ Max absolute value of scalar field in fluid (acoustic) =    1.52997196    
+ Elapsed time in seconds =    1696.0789999961853     
+ Elapsed time in hh:mm:ss =      0 h 28 m 16 s
+ Mean elapsed time per time step in seconds =    7.0669958333174382E-002
+ Time steps remaining =        36000
+ Estimated remaining time in seconds =    2544.1184999942780     
+ Estimated remaining time in hh:mm:ss =      0 h 42 m 24 s
+ Estimated total run time in seconds =    4240.1974999904633     
+ Estimated total run time in hh:mm:ss =      1 h 10 m 40 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:01
+
+
+ Total number of time steps done:        24000
+ Writing the seismograms by main proc alone took    4.34456491      seconds
+
+
+ ******************************************************************
+ Time step #   25200 out of   60000
+ ******************************************************************
+ Time:  1.079950E+03 s
+ We have done    41.9990349     % of the total
+ Max norm of vector field in solid (elastic) =    2.09768789E-08
+ Max absolute value of scalar field in fluid (acoustic) =    1.59062421    
+ Elapsed time in seconds =    1800.2790000438690     
+ Elapsed time in hh:mm:ss =      0 h 30 m 00 s
+ Mean elapsed time per time step in seconds =    7.1439642858883698E-002
+ Time steps remaining =        34800
+ Estimated remaining time in seconds =    2486.0995714891528     
+ Estimated remaining time in hh:mm:ss =      0 h 41 m 26 s
+ Estimated total run time in seconds =    4286.3785715330214     
+ Estimated total run time in hh:mm:ss =      1 h 11 m 26 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:02
+
+
+ ******************************************************************
+ Time step #   26400 out of   60000
+ ******************************************************************
+ Time:  1.139950E+03 s
+ We have done    43.9990654     % of the total
+ Max norm of vector field in solid (elastic) =    2.01168113E-08
+ Max absolute value of scalar field in fluid (acoustic) =    1.24898016    
+ Elapsed time in seconds =    1911.8990001678467     
+ Elapsed time in hh:mm:ss =      0 h 31 m 51 s
+ Mean elapsed time per time step in seconds =    7.2420416673024499E-002
+ Time steps remaining =        33600
+ Estimated remaining time in seconds =    2433.3260002136230     
+ Estimated remaining time in hh:mm:ss =      0 h 40 m 33 s
+ Estimated total run time in seconds =    4345.2250003814697     
+ Estimated total run time in hh:mm:ss =      1 h 12 m 25 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:03
+
+
+ ******************************************************************
+ Time step #   27600 out of   60000
+ ******************************************************************
+ Time:  1.199950E+03 s
+ We have done    45.9990997     % of the total
+ Max norm of vector field in solid (elastic) =    1.89164204E-08
+ Max absolute value of scalar field in fluid (acoustic) =   0.784753799    
+ Elapsed time in seconds =    2072.9320001602173     
+ Elapsed time in hh:mm:ss =      0 h 34 m 32 s
+ Mean elapsed time per time step in seconds =    7.5106231889862943E-002
+ Time steps remaining =        32400
+ Estimated remaining time in seconds =    2433.4419132315593     
+ Estimated remaining time in hh:mm:ss =      0 h 40 m 33 s
+ Estimated total run time in seconds =    4506.3739133917770     
+ Estimated total run time in hh:mm:ss =      1 h 15 m 06 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:05
+
+
+ ******************************************************************
+ Time step #   28800 out of   60000
+ ******************************************************************
+ Time:  1.259950E+03 s
+ We have done    47.9991341     % of the total
+ Max norm of vector field in solid (elastic) =    1.75381931E-08
+ Max absolute value of scalar field in fluid (acoustic) =   0.756200194    
+ Elapsed time in seconds =    2259.8410000801086     
+ Elapsed time in hh:mm:ss =      0 h 37 m 39 s
+ Mean elapsed time per time step in seconds =    7.8466701391670446E-002
+ Time steps remaining =        31200
+ Estimated remaining time in seconds =    2448.1610834201178     
+ Estimated remaining time in hh:mm:ss =      0 h 40 m 48 s
+ Estimated total run time in seconds =    4708.0020835002269     
+ Estimated total run time in hh:mm:ss =      1 h 18 m 28 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:09
+
+
+ ******************************************************************
+ Time step #   30000 out of   60000
+ ******************************************************************
+ Time:  1.319950E+03 s
+ We have done    49.9991684     % of the total
+ Max norm of vector field in solid (elastic) =    1.80294215E-08
+ Max absolute value of scalar field in fluid (acoustic) =   0.851952314    
+ Elapsed time in seconds =    2472.1100001335144     
+ Elapsed time in hh:mm:ss =      0 h 41 m 12 s
+ Mean elapsed time per time step in seconds =    8.2403666671117148E-002
+ Time steps remaining =        30000
+ Estimated remaining time in seconds =    2472.1100001335144     
+ Estimated remaining time in hh:mm:ss =      0 h 41 m 12 s
+ Estimated total run time in seconds =    4944.2200002670288     
+ Estimated total run time in hh:mm:ss =      1 h 22 m 24 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:13
+
+
+ Total number of time steps done:        30000
+ Writing the seismograms by main proc alone took    9.66039085      seconds
+
+
+ ******************************************************************
+ Time step #   31200 out of   60000
+ ******************************************************************
+ Time:  1.379950E+03 s
+ We have done    51.9991989     % of the total
+ Max norm of vector field in solid (elastic) =    1.83060109E-08
+ Max absolute value of scalar field in fluid (acoustic) =    2.95107484    
+ Elapsed time in seconds =    2726.2320001125336     
+ Elapsed time in hh:mm:ss =      0 h 45 m 26 s
+ Mean elapsed time per time step in seconds =    8.7379230772837616E-002
+ Time steps remaining =        28800
+ Estimated remaining time in seconds =    2516.5218462577232     
+ Estimated remaining time in hh:mm:ss =      0 h 41 m 56 s
+ Estimated total run time in seconds =    5242.7538463702567     
+ Estimated total run time in hh:mm:ss =      1 h 27 m 22 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:18
+
+
+ ******************************************************************
+ Time step #   32400 out of   60000
+ ******************************************************************
+ Time:  1.439950E+03 s
+ We have done    53.9992332     % of the total
+ Max norm of vector field in solid (elastic) =    1.83085103E-08
+ Max absolute value of scalar field in fluid (acoustic) =    1.79647517    
+ Elapsed time in seconds =    2944.9100000858307     
+ Elapsed time in hh:mm:ss =      0 h 49 m 04 s
+ Mean elapsed time per time step in seconds =    9.0892283953266373E-002
+ Time steps remaining =        27600
+ Estimated remaining time in seconds =    2508.6270371101518     
+ Estimated remaining time in hh:mm:ss =      0 h 41 m 48 s
+ Estimated total run time in seconds =    5453.5370371959825     
+ Estimated total run time in hh:mm:ss =      1 h 30 m 53 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:21
+
+
+ ******************************************************************
+ Time step #   33600 out of   60000
+ ******************************************************************
+ Time:  1.499950E+03 s
+ We have done    55.9992676     % of the total
+ Max norm of vector field in solid (elastic) =    1.85061477E-08
+ Max absolute value of scalar field in fluid (acoustic) =    1.94229102    
+ Elapsed time in seconds =    3090.7080001831055     
+ Elapsed time in hh:mm:ss =      0 h 51 m 30 s
+ Mean elapsed time per time step in seconds =    9.1985357148306704E-002
+ Time steps remaining =        26400
+ Estimated remaining time in seconds =    2428.4134287152970     
+ Estimated remaining time in hh:mm:ss =      0 h 40 m 28 s
+ Estimated total run time in seconds =    5519.1214288984029     
+ Estimated total run time in hh:mm:ss =      1 h 31 m 59 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:22
+
+
+ ******************************************************************
+ Time step #   34800 out of   60000
+ ******************************************************************
+ Time:  1.559950E+03 s
+ We have done    57.9992981     % of the total
+ Max norm of vector field in solid (elastic) =    1.84236697E-08
+ Max absolute value of scalar field in fluid (acoustic) =    3.63187313    
+ Elapsed time in seconds =    3179.5360000133514     
+ Elapsed time in hh:mm:ss =      0 h 52 m 59 s
+ Mean elapsed time per time step in seconds =    9.1365977011877916E-002
+ Time steps remaining =        25200
+ Estimated remaining time in seconds =    2302.4226206993235     
+ Estimated remaining time in hh:mm:ss =      0 h 38 m 22 s
+ Estimated total run time in seconds =    5481.9586207126749     
+ Estimated total run time in hh:mm:ss =      1 h 31 m 21 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:22
+
+
+ ******************************************************************
+ Time step #   36000 out of   60000
+ ******************************************************************
+ Time:  1.619950E+03 s
+ We have done    59.9993324     % of the total
+ Max norm of vector field in solid (elastic) =    1.81980155E-08
+ Max absolute value of scalar field in fluid (acoustic) =    4.75309563    
+ Elapsed time in seconds =    3268.0900001525879     
+ Elapsed time in hh:mm:ss =      0 h 54 m 28 s
+ Mean elapsed time per time step in seconds =    9.0780277782016333E-002
+ Time steps remaining =        24000
+ Estimated remaining time in seconds =    2178.7266667683921     
+ Estimated remaining time in hh:mm:ss =      0 h 36 m 18 s
+ Estimated total run time in seconds =    5446.8166669209804     
+ Estimated total run time in hh:mm:ss =      1 h 30 m 46 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:21
+
+
+ Total number of time steps done:        36000
+ Writing the seismograms by main proc alone took    4.74714518      seconds
+
+
+ ******************************************************************
+ Time step #   37200 out of   60000
+ ******************************************************************
+ Time:  1.679950E+03 s
+ We have done    61.9993668     % of the total
+ Max norm of vector field in solid (elastic) =    1.78539636E-08
+ Max absolute value of scalar field in fluid (acoustic) =    2.94527912    
+ Elapsed time in seconds =    3360.1710000038147     
+ Elapsed time in hh:mm:ss =      0 h 56 m 00 s
+ Mean elapsed time per time step in seconds =    9.0327177419457380E-002
+ Time steps remaining =        22800
+ Estimated remaining time in seconds =    2059.4596451636285     
+ Estimated remaining time in hh:mm:ss =      0 h 34 m 19 s
+ Estimated total run time in seconds =    5419.6306451674427     
+ Estimated total run time in hh:mm:ss =      1 h 30 m 19 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:21
+
+
+ ******************************************************************
+ Time step #   38400 out of   60000
+ ******************************************************************
+ Time:  1.739950E+03 s
+ We have done    63.9994011     % of the total
+ Max norm of vector field in solid (elastic) =    1.72159869E-08
+ Max absolute value of scalar field in fluid (acoustic) =    2.66819286    
+ Elapsed time in seconds =    3448.3270001411438     
+ Elapsed time in hh:mm:ss =      0 h 57 m 28 s
+ Mean elapsed time per time step in seconds =    8.9800182295342285E-002
+ Time steps remaining =        21600
+ Estimated remaining time in seconds =    1939.6839375793934     
+ Estimated remaining time in hh:mm:ss =      0 h 32 m 19 s
+ Estimated total run time in seconds =    5388.0109377205372     
+ Estimated total run time in hh:mm:ss =      1 h 29 m 48 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:20
+
+
+ ******************************************************************
+ Time step #   39600 out of   60000
+ ******************************************************************
+ Time:  1.799950E+03 s
+ We have done    65.9994354     % of the total
+ Max norm of vector field in solid (elastic) =    1.66298069E-08
+ Max absolute value of scalar field in fluid (acoustic) =    3.69326091    
+ Elapsed time in seconds =    3536.9300000667572     
+ Elapsed time in hh:mm:ss =      0 h 58 m 56 s
+ Mean elapsed time per time step in seconds =    8.9316414143099931E-002
+ Time steps remaining =        20400
+ Estimated remaining time in seconds =    1822.0548485192387     
+ Estimated remaining time in hh:mm:ss =      0 h 30 m 22 s
+ Estimated total run time in seconds =    5358.9848485859957     
+ Estimated total run time in hh:mm:ss =      1 h 29 m 18 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:20
+
+
+ ******************************************************************
+ Time step #   40800 out of   60000
+ ******************************************************************
+ Time:  1.859950E+03 s
+ We have done    67.9994659     % of the total
+ Max norm of vector field in solid (elastic) =    1.59730238E-08
+ Max absolute value of scalar field in fluid (acoustic) =    1.31347835    
+ Elapsed time in seconds =    3624.6410000324249     
+ Elapsed time in hh:mm:ss =      1 h 00 m 24 s
+ Mean elapsed time per time step in seconds =    8.8839240196873157E-002
+ Time steps remaining =        19200
+ Estimated remaining time in seconds =    1705.7134117799646     
+ Estimated remaining time in hh:mm:ss =      0 h 28 m 25 s
+ Estimated total run time in seconds =    5330.3544118123900     
+ Estimated total run time in hh:mm:ss =      1 h 28 m 50 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:19
+
+
+ ******************************************************************
+ Time step #   42000 out of   60000
+ ******************************************************************
+ Time:  1.919950E+03 s
+ We have done    69.9994965     % of the total
+ Max norm of vector field in solid (elastic) =    1.54136615E-08
+ Max absolute value of scalar field in fluid (acoustic) =    2.32107258    
+ Elapsed time in seconds =    3720.6800000667572     
+ Elapsed time in hh:mm:ss =      1 h 02 m 00 s
+ Mean elapsed time per time step in seconds =    8.8587619049208505E-002
+ Time steps remaining =        18000
+ Estimated remaining time in seconds =    1594.5771428857531     
+ Estimated remaining time in hh:mm:ss =      0 h 26 m 34 s
+ Estimated total run time in seconds =    5315.2571429525105     
+ Estimated total run time in hh:mm:ss =      1 h 28 m 35 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:19
+
+
+ Total number of time steps done:        42000
+ Writing the seismograms by main proc alone took    4.90093899      seconds
+
+
+ ******************************************************************
+ Time step #   43200 out of   60000
+ ******************************************************************
+ Time:  1.979950E+03 s
+ We have done    71.9995346     % of the total
+ Max norm of vector field in solid (elastic) =    1.46987453E-08
+ Max absolute value of scalar field in fluid (acoustic) =    1.64621890    
+ Elapsed time in seconds =    3824.1089999675751     
+ Elapsed time in hh:mm:ss =      1 h 03 m 44 s
+ Mean elapsed time per time step in seconds =    8.8521041665916095E-002
+ Time steps remaining =        16800
+ Estimated remaining time in seconds =    1487.1534999873904     
+ Estimated remaining time in hh:mm:ss =      0 h 24 m 47 s
+ Estimated total run time in seconds =    5311.2624999549653     
+ Estimated total run time in hh:mm:ss =      1 h 28 m 31 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:19
+
+
+ ******************************************************************
+ Time step #   44400 out of   60000
+ ******************************************************************
+ Time:  2.039950E+03 s
+ We have done    73.9995651     % of the total
+ Max norm of vector field in solid (elastic) =    1.45837067E-08
+ Max absolute value of scalar field in fluid (acoustic) =    2.52788091    
+ Elapsed time in seconds =    3914.5880000591278     
+ Elapsed time in hh:mm:ss =      1 h 05 m 14 s
+ Mean elapsed time per time step in seconds =    8.8166396397728108E-002
+ Time steps remaining =        15600
+ Estimated remaining time in seconds =    1375.3957838045585     
+ Estimated remaining time in hh:mm:ss =      0 h 22 m 55 s
+ Estimated total run time in seconds =    5289.9837838636868     
+ Estimated total run time in hh:mm:ss =      1 h 28 m 09 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:18
+
+
+ ******************************************************************
+ Time step #   45600 out of   60000
+ ******************************************************************
+ Time:  2.099950E+03 s
+ We have done    75.9996033     % of the total
+ Max norm of vector field in solid (elastic) =    1.50012305E-08
+ Max absolute value of scalar field in fluid (acoustic) =    1.34325325    
+ Elapsed time in seconds =    4011.7630000114441     
+ Elapsed time in hh:mm:ss =      1 h 06 m 51 s
+ Mean elapsed time per time step in seconds =    8.7977258772180794E-002
+ Time steps remaining =        14400
+ Estimated remaining time in seconds =    1266.8725263194035     
+ Estimated remaining time in hh:mm:ss =      0 h 21 m 06 s
+ Estimated total run time in seconds =    5278.6355263308478     
+ Estimated total run time in hh:mm:ss =      1 h 27 m 58 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:18
+
+
+ ******************************************************************
+ Time step #   46800 out of   60000
+ ******************************************************************
+ Time:  2.159950E+03 s
+ We have done    77.9996338     % of the total
+ Max norm of vector field in solid (elastic) =    1.52146722E-08
+ Max absolute value of scalar field in fluid (acoustic) =    1.49832118    
+ Elapsed time in seconds =    4109.3129999637604     
+ Elapsed time in hh:mm:ss =      1 h 08 m 29 s
+ Mean elapsed time per time step in seconds =    8.7805833332558980E-002
+ Time steps remaining =        13200
+ Estimated remaining time in seconds =    1159.0369999897785     
+ Estimated remaining time in hh:mm:ss =      0 h 19 m 19 s
+ Estimated total run time in seconds =    5268.3499999535388     
+ Estimated total run time in hh:mm:ss =      1 h 27 m 48 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:18
+
+
+ ******************************************************************
+ Time step #   48000 out of   60000
+ ******************************************************************
+ Time:  2.219950E+03 s
+ We have done    79.9996643     % of the total
+ Max norm of vector field in solid (elastic) =    1.53393316E-08
+ Max absolute value of scalar field in fluid (acoustic) =    1.67518759    
+ Elapsed time in seconds =    4205.7780001163483     
+ Elapsed time in hh:mm:ss =      1 h 10 m 05 s
+ Mean elapsed time per time step in seconds =    8.7620375002423923E-002
+ Time steps remaining =        12000
+ Estimated remaining time in seconds =    1051.4445000290871     
+ Estimated remaining time in hh:mm:ss =      0 h 17 m 31 s
+ Estimated total run time in seconds =    5257.2225001454353     
+ Estimated total run time in hh:mm:ss =      1 h 27 m 37 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:18
+
+
+ Total number of time steps done:        48000
+ Writing the seismograms by main proc alone took    4.98804522      seconds
+
+
+ ******************************************************************
+ Time step #   49200 out of   60000
+ ******************************************************************
+ Time:  2.279950E+03 s
+ We have done    81.9997025     % of the total
+ Max norm of vector field in solid (elastic) =    1.55491815E-08
+ Max absolute value of scalar field in fluid (acoustic) =    2.49261332    
+ Elapsed time in seconds =    4311.8819999694824     
+ Elapsed time in hh:mm:ss =      1 h 11 m 51 s
+ Mean elapsed time per time step in seconds =    8.7639878048160216E-002
+ Time steps remaining =        10800
+ Estimated remaining time in seconds =    946.51068292013031     
+ Estimated remaining time in hh:mm:ss =      0 h 15 m 46 s
+ Estimated total run time in seconds =    5258.3926828896128     
+ Estimated total run time in hh:mm:ss =      1 h 27 m 38 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:18
+
+
+ ******************************************************************
+ Time step #   50400 out of   60000
+ ******************************************************************
+ Time:  2.339950E+03 s
+ We have done    83.9997330     % of the total
+ Max norm of vector field in solid (elastic) =    1.54438382E-08
+ Max absolute value of scalar field in fluid (acoustic) =    2.99636674    
+ Elapsed time in seconds =    4398.2150001525879     
+ Elapsed time in hh:mm:ss =      1 h 13 m 18 s
+ Mean elapsed time per time step in seconds =    8.7266170637948171E-002
+ Time steps remaining =         9600
+ Estimated remaining time in seconds =    837.75523812430242     
+ Estimated remaining time in hh:mm:ss =      0 h 13 m 57 s
+ Estimated total run time in seconds =    5235.9702382768901     
+ Estimated total run time in hh:mm:ss =      1 h 27 m 15 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:18
+
+
+ ******************************************************************
+ Time step #   51600 out of   60000
+ ******************************************************************
+ Time:  2.399950E+03 s
+ We have done    85.9997635     % of the total
+ Max norm of vector field in solid (elastic) =    1.52399799E-08
+ Max absolute value of scalar field in fluid (acoustic) =    1.95223331    
+ Elapsed time in seconds =    4484.6730000972748     
+ Elapsed time in hh:mm:ss =      1 h 14 m 44 s
+ Mean elapsed time per time step in seconds =    8.6912267443745639E-002
+ Time steps remaining =         8400
+ Estimated remaining time in seconds =    730.06304652746337     
+ Estimated remaining time in hh:mm:ss =      0 h 12 m 10 s
+ Estimated total run time in seconds =    5214.7360466247383     
+ Estimated total run time in hh:mm:ss =      1 h 26 m 54 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:17
+
+
+ ******************************************************************
+ Time step #   52800 out of   60000
+ ******************************************************************
+ Time:  2.459950E+03 s
+ We have done    87.9998016     % of the total
+ Max norm of vector field in solid (elastic) =    1.54354609E-08
+ Max absolute value of scalar field in fluid (acoustic) =    2.20973396    
+ Elapsed time in seconds =    4569.0210001468658     
+ Elapsed time in hh:mm:ss =      1 h 16 m 09 s
+ Mean elapsed time per time step in seconds =    8.6534488639145188E-002
+ Time steps remaining =         7200
+ Estimated remaining time in seconds =    623.04831820184540     
+ Estimated remaining time in hh:mm:ss =      0 h 10 m 23 s
+ Estimated total run time in seconds =    5192.0693183487110     
+ Estimated total run time in hh:mm:ss =      1 h 26 m 32 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:17
+
+
+ ******************************************************************
+ Time step #   54000 out of   60000
+ ******************************************************************
+ Time:  2.519950E+03 s
+ We have done    89.9998322     % of the total
+ Max norm of vector field in solid (elastic) =    1.47409729E-08
+ Max absolute value of scalar field in fluid (acoustic) =    3.03970480    
+ Elapsed time in seconds =    4650.5110001564026     
+ Elapsed time in hh:mm:ss =      1 h 17 m 30 s
+ Mean elapsed time per time step in seconds =    8.6120574076970421E-002
+ Time steps remaining =         6000
+ Estimated remaining time in seconds =    516.72344446182251     
+ Estimated remaining time in hh:mm:ss =      0 h 08 m 36 s
+ Estimated total run time in seconds =    5167.2344446182251     
+ Estimated total run time in hh:mm:ss =      1 h 26 m 07 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:16
+
+
+ Total number of time steps done:        54000
+ Writing the seismograms by main proc alone took    4.48137808      seconds
+
+
+ ******************************************************************
+ Time step #   55200 out of   60000
+ ******************************************************************
+ Time:  2.579950E+03 s
+ We have done    91.9998703     % of the total
+ Max norm of vector field in solid (elastic) =    1.46692178E-08
+ Max absolute value of scalar field in fluid (acoustic) =    3.70389199    
+ Elapsed time in seconds =    4735.2720000743866     
+ Elapsed time in hh:mm:ss =      1 h 18 m 55 s
+ Mean elapsed time per time step in seconds =    8.5783913044825841E-002
+ Time steps remaining =         4800
+ Estimated remaining time in seconds =    411.76278261516404     
+ Estimated remaining time in hh:mm:ss =      0 h 06 m 51 s
+ Estimated total run time in seconds =    5147.0347826895504     
+ Estimated total run time in hh:mm:ss =      1 h 25 m 47 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:16
+
+
+ ******************************************************************
+ Time step #   56400 out of   60000
+ ******************************************************************
+ Time:  2.639950E+03 s
+ We have done    93.9999008     % of the total
+ Max norm of vector field in solid (elastic) =    1.42182133E-08
+ Max absolute value of scalar field in fluid (acoustic) =    2.29924369    
+ Elapsed time in seconds =    4814.9249999523163     
+ Elapsed time in hh:mm:ss =      1 h 20 m 14 s
+ Mean elapsed time per time step in seconds =    8.5371010637452421E-002
+ Time steps remaining =         3600
+ Estimated remaining time in seconds =    307.33563829482870     
+ Estimated remaining time in hh:mm:ss =      0 h 05 m 07 s
+ Estimated total run time in seconds =    5122.2606382471449     
+ Estimated total run time in hh:mm:ss =      1 h 25 m 22 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:16
+
+
+ ******************************************************************
+ Time step #   57600 out of   60000
+ ******************************************************************
+ Time:  2.699950E+03 s
+ We have done    95.9999313     % of the total
+ Max norm of vector field in solid (elastic) =    1.38951837E-08
+ Max absolute value of scalar field in fluid (acoustic) =    4.74818373    
+ Elapsed time in seconds =    4895.0870001316071     
+ Elapsed time in hh:mm:ss =      1 h 21 m 35 s
+ Mean elapsed time per time step in seconds =    8.4984149307840401E-002
+ Time steps remaining =         2400
+ Estimated remaining time in seconds =    203.96195833881697     
+ Estimated remaining time in hh:mm:ss =      0 h 03 m 23 s
+ Estimated total run time in seconds =    5099.0489584704237     
+ Estimated total run time in hh:mm:ss =      1 h 24 m 59 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:15
+
+
+ ******************************************************************
+ Time step #   58800 out of   60000
+ ******************************************************************
+ Time:  2.759950E+03 s
+ We have done    97.9999695     % of the total
+ Max norm of vector field in solid (elastic) =    1.36123388E-08
+ Max absolute value of scalar field in fluid (acoustic) =    7.11021852    
+ Elapsed time in seconds =    4977.7660000324249     
+ Elapsed time in hh:mm:ss =      1 h 22 m 57 s
+ Mean elapsed time per time step in seconds =    8.4655884354292943E-002
+ Time steps remaining =         1200
+ Estimated remaining time in seconds =    101.58706122515153     
+ Estimated remaining time in hh:mm:ss =      0 h 01 m 41 s
+ Estimated total run time in seconds =    5079.3530612575769     
+ Estimated total run time in hh:mm:ss =      1 h 24 m 39 s
+ The run will finish approximately on: Tue Nov 24, 2026 16:15
+
+
+ ******************************************************************
+ Time step #   60000 out of   60000
+ ******************************************************************
+ Time:  2.819950E+03 s
+ We have done    100.000000     % of the total
+ Max norm of vector field in solid (elastic) =    1.34339295E-08
+ Max absolute value of scalar field in fluid (acoustic) =    2.95823431    
+ Elapsed time in seconds =    5058.7100000381470     
+ Elapsed time in hh:mm:ss =      1 h 24 m 18 s
+ Mean elapsed time per time step in seconds =    8.4311833333969119E-002
+ Time steps remaining =            0
+ Estimated remaining time in seconds =    0.0000000000000000     
+ Estimated remaining time in hh:mm:ss =      0 h 00 m 00 s
+ Estimated total run time in seconds =    5058.7100000381470     
+ Estimated total run time in hh:mm:ss =      1 h 24 m 18 s
+
+
+ Total number of time steps done:        60000
+ Writing the seismograms by main proc alone took    4.65780687      seconds
+
+
+ Time loop finished. Timing info:
+ Total duration of the time loop in seconds  =    5063.43115      s
+ Total duration of the time loop in hh:mm:ss =      1 h 24 m 23 s
+
+ Total number of time steps =        60000
+ Average duration of a time step of the time loop =    8.43905136E-02  s
+
+ Total number of spectral elements in the mesh =       304830
+     of which       304830  are regular elements
+     and            0  are PML elements.
+ Average duration of the calculation per spectral element =    4.56193402E-06  s
+
+
+ Total duration of the timeloop measured using date and time of the system
+     in seconds     =    5063.43701      s
+     in in hh:mm:ss =      1 h 24 m 23 s
+
+
+
+ -------------------------------------------------------------------------------
+ -------------------------------------------------------------------------------
+ Program SPECFEM2D: 
+ -------------------------------------------------------------------------------
+ -------------------------------------------------------------------------------
+ Venus venus_V1Tc_T60 air_V1Tc
+ -------------------------------------------------------------------------------
+ -------------------------------------------------------------------------------
+ D a t e : 24 - 11 - 2026                                 T i m e  : 16:14:39
+ -------------------------------------------------------------------------------
+ -------------------------------------------------------------------------------
+done: Tue Nov 24 16:14:40 AKST 2026
