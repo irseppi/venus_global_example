@@ -3,8 +3,7 @@
 __pycache__/taup_ic_compare.cpython-313.pyc
 fortran/axisym_viscoacoustic_fix.patch.rej
 .DS_Store
-taup_models/V5-Th_IC2500_liquid.npz
-taup_models/V5-Th_IC2500_solid.npz
+*.npz
 *.md
 !README.md
 # everything SPECFEM2D writes while running, in every run folder
