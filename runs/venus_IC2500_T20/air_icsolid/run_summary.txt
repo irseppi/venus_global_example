@@ -1,0 +1,18 @@
+Venus run 'venus_IC2500_T20/air_icsolid'
+air density scale       : 1
+interior                : mantle 3183.3-6051.9 km, liquid outer core 2493.4-3183.3 km, solid inner core 0-2493.4 km
+minimum period          : 20.0 s  (Ricker f0 = 0.02 Hz)
+multiplication_factor   : 50
+radial counts           : air 126, mantle 1584, outer core 256/256, inner core 564
+central cube radius     : 1327.4 km
+air elements            : 3.22 km wide x 1.59 km tall (need <= 3.32 km)
+slowest air sound speed : 207 m/s
+elements (half mesh)    : 2,355,750
+DT                      : 0.017 s (max estimate 0.0217 s; compare with 'Maximum suggested time step' in the solver output)
+NSTEP                   : 176,500  (3000 s simulated)
+stations                : 210
+sponge                  : True (70.0-100.0 km, Q_min 3.0)
+one-way vertical air travel time to the top: 360 s
+  -> echoes off the top return ~720 s after an arrival at a
+     ground station; analyze before that if the sponge is off
+estimated cost          : 132.8-398.5 core-hours; 0.79-2.37 h on 168 cores (cluster), 33.2-99.6 h on 4 cores (local)

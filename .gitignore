@@ -4,11 +4,7 @@ __pycache__/taup_ic_compare.cpython-313.pyc
 fortran/axisym_viscoacoustic_fix.patch.rej
 .DS_Store
 taup_models/V5-Th_IC2500_liquid.npz
-taup_models/V5-Th_IC2500_liquid.tvel
 taup_models/V5-Th_IC2500_solid.npz
-taup_models/V5-Th_IC2500_solid.tvel
-taup_models/V5-Th_IC2500.npz
-taup_models/V5-Th_IC2500.tvel
 *.md
 !README.md
 # everything SPECFEM2D writes while running, in every run folder
@@ -16,3 +12,11 @@ taup_models/V5-Th_IC2500.tvel
 # mesher output (rebuilt by every run script); the generated
 # MESH/Nummaterial_velocity_file_NO_MUD stays tracked
 **/MESH/*_AK135F_NO_MUD
+# SLURM job logs in the run folders
+log.txt
+# SPECFEM2D mesher linked into each run folder by the run scripts
+xmeshfem2D
+# mesher compiled from create_mesh_venus.F90 by the run scripts
+xcreate_mesh
+# SPECFEM2D solver linked into each run folder by the run scripts
+xspecfem2D
