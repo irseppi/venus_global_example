@@ -3,7 +3,6 @@
 __pycache__/taup_ic_compare.cpython-313.pyc
 fortran/axisym_viscoacoustic_fix.patch.rej
 .DS_Store
-*.npz
 *.md
 !README.md
 # everything SPECFEM2D writes while running, in every run folder
@@ -19,3 +18,6 @@ xmeshfem2D
 xcreate_mesh
 # SPECFEM2D solver linked into each run folder by the run scripts
 xspecfem2D
+# TauP models, rebuilt from the run tables by the plot scripts
+*.npz
+.tvel
