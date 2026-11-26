@@ -1,7 +1,7 @@
 """
-Plot the ground vertical velocity (?XZ) and the pressure ALT_KM up at
-one or more station distances, for the solid inner-core run with
-atmosphere. Each distance gets its own figure.
+Plot the ground vertical velocity (local up, rotated from ?XX and ?XZ)
+and the pressure ALT_KM up at one or more station distances, for the
+solid inner-core run with atmosphere. Each distance gets its own figure.
 
 Vertical lines are TauP arrival times of the inner-core phases, from a
 model built from the run's own DATA/venus_model.txt (see
@@ -24,7 +24,7 @@ import os
 import numpy as np
 from matplotlib import pyplot as plt
 
-from taup_ic_compare import build_taup
+from taup_ic_compare import build_taup, read_local_vertical
 
 PERIOD = "T20"                   # T20 or T60: picks the run folder
 RUN_DIR = f"runs/venus_IC2500_{PERIOD}/air_icsolid"
@@ -106,16 +106,17 @@ def plot_distance(model, air, dist_deg):
     # the band letter (B, H, ...) depends on DT, so match any of them
     found = glob.glob(os.path.join(out, f"VE.G{dist_deg:03d}.?XZ.semv"))
     air_file = os.path.join(out, f"VE.A{dist_deg:03d}H{ALT_KM:03d}.PRE.semp")
-    if not found or not os.path.exists(air_file):
+    vertical = read_local_vertical(found[0], dist_deg) if found else None
+    if vertical is None or not os.path.exists(air_file):
         print(f"{dist_deg} deg: no ground or {ALT_KM} km seismogram in "
               f"{out}, skipped")
         return False
-    t_g, ground = read_sem(found[0])
+    t_g, ground = vertical
     t_a, press = read_sem(air_file)
 
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(9, 6), sharex=True)
     ax1.plot(t_g, ground, color="k", lw=0.8)
-    ax1.set_ylabel(f"Vertical Ground Velocity (m/s)")
+    ax1.set_ylabel("Vertical Ground Velocity (m/s)")
     ax1.set_title(f"Solid Inner Core Model, {dist_deg}$^\\circ$ "
                   "from the source")
     ax2.plot(t_a, press, color="b", lw=0.8)

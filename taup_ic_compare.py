@@ -3,7 +3,8 @@ Plot the T20 runs with atmosphere at the ground stations: V5-Th with a
 solid inner core vs. V1-Tc with a liquid core, with TauP travel times for
 both models.
 
-V5-Th run in black, V1-Tc run in red (dashed), vertical velocity (?XZ),
+V5-Th run in black, V1-Tc run in red (dashed), vertical velocity (local
+up, rotated from ?XX and ?XZ; see read_local_vertical),
 each station scaled to the larger peak of the two runs there; that peak
 (m/s) is written at the right of each trace. TauP ticks: V5-Th as solid
 lines,
@@ -73,9 +74,42 @@ def build_taup(case_dir, name):
     return TauPyModel(model=os.path.join(TAUP_DIR, name + ".npz"))
 
 
+def read_local_vertical(z_path, dist_deg):
+    """
+    Read a station's velocity and rotate it to the local vertical (up).
+
+    In an AXISYM run, X is the distance from the symmetry axis and Z is
+    along the axis, pointing at the source; neither is the local vertical
+    except at the source. A station dist_deg from the source sits at
+    (r sin(dist), r cos(dist)), so up = sin(dist) X + cos(dist) Z. Plotting
+    Z alone flips the sign of vertical motion beyond 90 deg and mixes in
+    horizontal motion in between.
+
+    :type z_path: str
+    :param z_path: the station's ?XZ.semv file; the ?XX.semv file next to
+        it is read too
+    :type dist_deg: float
+    :param dist_deg: station distance from the source [deg]
+    :rtype: tuple of numpy.ndarray or None
+    :return: (time_s, upward velocity [m/s]), or None if a file is missing,
+        empty or unreadable
+    """
+    x_path = z_path[:-len("Z.semv")] + "X.semv"
+    try:
+        z = np.loadtxt(z_path, ndmin=2)
+        x = np.loadtxt(x_path, ndmin=2)
+    except (OSError, ValueError):
+        return None
+    if len(z) < 2 or len(x) != len(z):
+        return None
+    th = np.radians(dist_deg)
+    return z[:, 0], np.sin(th) * x[:, 1] + np.cos(th) * z[:, 1]
+
+
 def read_ground_traces(case_dir):
     """
-    Read the vertical velocity at the ground stations (VE.G<deg>).
+    Read the vertical (local up) velocity at the ground stations
+    (VE.G<deg>), rotated from the solver's X and Z components.
 
     :type case_dir: str
     :param case_dir: run folder
@@ -86,12 +120,9 @@ def read_ground_traces(case_dir):
     pattern = os.path.join(case_dir, "OUTPUT_FILES", "VE.G*.?XZ.semv")
     for path in glob.glob(pattern):
         dist = float(os.path.basename(path).split(".")[1][1:])
-        try:
-            a = np.loadtxt(path, ndmin=2)
-        except ValueError:
-            continue
-        if len(a) > 1:
-            out[dist] = (a[:, 0], a[:, 1])
+        trace = read_local_vertical(path, dist)
+        if trace is not None:
+            out[dist] = trace
     return out
 
 
